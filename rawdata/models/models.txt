@@ -7176,7 +7176,8 @@ WorkerCity_M_07
 WorkerCity_M_08
 WorkerCity_M_09
 WorkerCity_M_10
-OCCDriver
+
+OCCDriver 47
 Ambulance.Generic_F_01
 Ambulance.Generic_F_02
 Ambulance.Generic_F_03
@@ -7515,10 +7516,12 @@ Worker.WorkerWelder_M_01
 Worker.WorkerWelder_M_02
 Worker.WorkerWelder_M_03
 Worker.WorkerWelder_M_04
-Marketing
+
+Marketing 48
 Rich_F_01
 Tourist_MO_01
-Debug
+
+Debug 49
 BRONZE_BayAreaThrash
 BRONZE_Hometown
 BRONZE_Patriotic
