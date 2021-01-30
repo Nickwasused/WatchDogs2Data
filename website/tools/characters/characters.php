@@ -41,8 +41,8 @@ $command = "SELECT * FROM `charactermodels`,`charactercategorys` WHERE `characte
 foreach ($pdo->query($command) as $row)
 {
     echo "<tr><td><p>".$row["modelname"]."</p></td><td>";
-    if (!empty($row['image'])) {
-        echo "<img class=\"lozad\" data-src=\"/images/models/".$row["image"]."\"></img>";
+    if ($row['image'] === "1") {
+        echo "<img class=\"lozad\" data-src=\"/images/models/".$row["categoryname"]."/".$row["modelname"].".webp\"></img>";
     } else {
         echo "<img class=\"lozad\" data-src=\"/images/icons/placeholder.svg\"></img>";
     }
