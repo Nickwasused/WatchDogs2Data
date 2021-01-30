@@ -1,0 +1,136 @@
+@charset "utf-8";
+
+@font-face {
+    font-family  : 'HACKED';
+    src: url('/fonts/HACKED.woff2') format('woff2'),
+		 url('/fonts/HACKED.woff') format('woff'),
+		 url('/fonts/HACKED.ttf') format('truetype'),
+         url('/fonts/HACKED.svg#robotoregular') format('svg');
+    font-weight   : normal;
+    font-style    : normal;
+	font-display  : swap;
+}
+
+
+html {
+	font-family : 'HACKED' !important;
+	font-size   : 16px;
+	overflow-x  : hidden;
+}
+
+body {
+	margin          : 0px;
+	background-size : 100% 100%;
+}
+
+h1 {
+	font-size   : 8rem;
+	text-align  : center;
+	padding-top : 10vh;
+	margin      : 0px;
+	color       : white;
+}
+
+h2 {
+	font-size   : 5rem;
+	text-align  : center;
+	padding-top : 2vh;
+	color       : white;
+}
+
+h3,
+h3 a  {
+	font-size   : 4rem;
+	text-align  : center;
+	color       : white;
+}
+
+ul {
+	list-style-type  : none;
+	margin           : 0px;
+	padding          : 0px;
+	overflow         : hidden;
+	background-color : #333;
+	height           : 5%;
+}
+
+li {
+	float : left;
+}
+
+li a {
+	display         : block;
+	color           : white;
+	text-align      : center;
+	padding         : 14px 16px;
+	text-decoration : none;
+}
+
+.contentstart {
+	display                : flex;
+    flex-direction         : column;
+	height                 : 95%;
+	width                  : 100%;
+	background             : rgba(41, 38, 56, 0.75);
+}
+
+.content {
+	display           : flex;
+    flex-direction    : column;
+	min-width         : 100%;
+	min-height        : 100vh;
+	height            : auto;
+	background        : rgba(41, 38, 56, 0.75);
+}
+
+.imagefilter {
+	background : rgba(41, 38, 56, 0.75);
+	width      : 100%;
+	min-height     : 100vh;
+}
+
+.icon {
+	width : 100%;
+	max-width : 500px;
+}
+
+table {
+	font-family     : arial;
+	font-size       : 0.75rem;
+	text-align      : center;
+	table-layout    : fixed;
+	border-spacing  : 1;
+	border-collapse : collapse;
+	empty-cells     : show;
+	background      : rgb(126, 126, 126);
+	border-radius   : 10px;
+	width           : 95%;
+	margin-left     : auto;
+	margin-right    : auto;
+	margin-top      : 5%;
+	position        : relative;
+	overflow-x      : auto;
+}
+
+table thead tr {
+	font-size  : 12px;
+	height     : 60px;
+	background : #36304a;
+	color      : white;
+}
+
+table tbody tr {
+	height  : 50px;
+}
+
+table tbody tr:last-child {
+  border : 0;
+}
+
+tbody tr:nth-child(even) {
+	background-color : #b4b4b4;
+}
+
+table img {
+	max-width : 100px;
+}
