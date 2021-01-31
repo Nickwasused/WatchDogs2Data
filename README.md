@@ -7,5 +7,5 @@ Watch Dogs 2 Data
 
 ## raw-data
 
-[character models](rawdata/models/models.txt)<br>
-[vehicles](rawdata/vehicles/vehicles.txt)
+[character models](github/characters.md)<br>
+[vehicles](github/vehicles.md)
