@@ -80,7 +80,7 @@ li a {
 	height                 : 95%;
 	width                  : 100%;
 	height                 : auto;
-	background             : rgba(41, 38, 56, 0.75);
+	background             : rgba(41, 38, 56, 0.85);
 }
 
 .content {
@@ -90,11 +90,11 @@ li a {
 	min-width         : 100%;
 	min-height        : 100vh;
 	height            : auto;
-	background        : rgba(41, 38, 56, 0.75);
+	background        : rgba(41, 38, 56, 0.85);
 }
 
 .imagefilter {
-	background : rgba(41, 38, 56, 0.75);
+	background : rgba(41, 38, 56, 0.85);
 	width      : 100%;
 	min-height     : 100vh;
 }
@@ -149,3 +149,29 @@ tbody tr:nth-child(even) {
 table img {
 	max-width : 100px;
 }
+
+.button {
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+  }
+  
+  .button a { 
+	  color : white;    
+  }
+  
+  .button a:hover { 
+	  font-weight : bold;
+	  color       : white;   	
+  }
+  
+  .button1 {background-color: #EC6762;} /* Red */
+  .button2 {background-color: #4CAF50;} /* Green */
+  .button3 {background-color: #008CBA;} /* Blue */
+  .topbutton {margin-bottom   : 5%;}

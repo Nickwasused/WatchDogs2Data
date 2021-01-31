@@ -10,9 +10,10 @@ if(!empty($_GET['page'])) {
         $page = 1;
     }
 }
-
+include("../../snippets/blocksnap.php");
 echo "
-<div class=\"content lozad\" data-background-image=\"/images/backgrounds/background3.webp\">
+<a id=\"top\"></a>
+<div class=\"contentstart lozad\" data-background-image=\"/images/backgrounds/background3.webp\">
 <div class=\"imagefilter\">
 <table>
 <thead>
@@ -39,6 +40,7 @@ foreach ($pdo->query($command) as $row)
 echo"
 </tbody>
 </table>
+<center><a href=\"#top\"><button class=\"button button3 topbutton\">top</button></a></center>
 </div>
 </div>
 

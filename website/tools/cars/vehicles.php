@@ -8,13 +8,9 @@ if(!empty($_GET['page'])) {
         $page = 1;
     }
 }
-
+include("../../snippets/blocksnap.php");
 echo "
-<style>
-header {
-	scroll-snap-align : none !important;
-}
-</style>
+<a id=\"top\"></a>
 <div class=\"contentstart lozad\" data-background-image=\"/images/backgrounds/background3.webp\">
 <div class=\"imagefilter\">
 <table>
@@ -42,6 +38,7 @@ foreach ($pdo->query($command) as $row)
 echo"
 </tbody>
 </table>
+<center><a href=\"#top\"><button class=\"button button3 topbutton\">top</button></a></center>
 </div>
 </div>
 

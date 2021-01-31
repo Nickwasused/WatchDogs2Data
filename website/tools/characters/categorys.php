@@ -1,11 +1,7 @@
 <?php
 include("../../snippets/head.php");
+include("../../snippets/blocksnap.php");
 echo "
-<style>
-header {
-	scroll-snap-align : none !important;
-}
-</style>
 <div class=\"contentstart lozad\" data-background-image=\"/images/backgrounds/background3.webp\">
 <div class=\"imagefilter\">";
 	
