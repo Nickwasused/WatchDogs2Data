@@ -32,7 +32,7 @@ foreach ($pdo->query($command) as $row)
 {
     echo "<tr><td><p>".$row["vehiclename"]."</p></td><td>";
     if ($row['image'] === "1") {
-        echo "<img class=\"lozad\" data-src=\"/images/vehicles/".$row["vehiclename"].".webp\"></img>";
+        echo "<img class=\"lozad car\" data-src=\"/images/vehicles/".$row["vehiclename"].".webp\"></img>";
     } else {
         echo "<img class=\"lozad\" data-src=\"/images/icons/placeholder.svg\"></img>";
     }

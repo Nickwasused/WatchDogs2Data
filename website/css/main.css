@@ -104,6 +104,11 @@ li a {
 	height     : 250px;
 }
 
+.car {
+	width : 75%;
+	max-width: 75%;
+}
+
 table {
 	font-family     : arial;
 	font-size       : 0.75rem;
