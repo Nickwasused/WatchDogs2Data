@@ -14,8 +14,15 @@
 
 html {
 	font-family : 'HACKED' !important;
-	font-size   : 16px;
+	font-size   : 2vh;
 	overflow-x  : hidden;
+	scroll-snap-type: y mandatory;
+}
+
+header {
+	scroll-snap-align : start;
+	min-height        : 5vh;
+	max-height        : 5vh;
 }
 
 body {
@@ -64,6 +71,7 @@ li a {
 	text-align      : center;
 	padding         : 14px 16px;
 	text-decoration : none;
+	font-size       : 1rem;
 }
 
 .contentstart {
@@ -71,10 +79,12 @@ li a {
     flex-direction         : column;
 	height                 : 95%;
 	width                  : 100%;
+	height                 : auto;
 	background             : rgba(41, 38, 56, 0.75);
 }
 
 .content {
+	scroll-snap-align : start;
 	display           : flex;
     flex-direction    : column;
 	min-width         : 100%;
@@ -90,8 +100,8 @@ li a {
 }
 
 .icon {
-	width : 100%;
-	max-width : 500px;
+	max-height : 250px;
+	height     : 250px;
 }
 
 table {

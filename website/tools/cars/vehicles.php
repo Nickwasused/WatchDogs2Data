@@ -1,8 +1,6 @@
 <?php
 include("../../snippets/head.php");
 
-$categoryid=$_REQUEST["categoryid"];
-
 $page = 1;
 if(!empty($_GET['page'])) {
     $page = filter_input(INPUT_GET, 'page', FILTER_VALIDATE_INT);
@@ -12,7 +10,12 @@ if(!empty($_GET['page'])) {
 }
 
 echo "
-<div class=\"content lozad\" data-background-image=\"/images/backgrounds/background3.webp\">
+<style>
+header {
+	scroll-snap-align : none !important;
+}
+</style>
+<div class=\"contentstart lozad\" data-background-image=\"/images/backgrounds/background3.webp\">
 <div class=\"imagefilter\">
 <table>
 <thead>
@@ -23,13 +26,13 @@ echo "
 </thead>
 <tbody>";
 	
-$command = "SELECT * FROM `charactermodels`,`charactercategorys` WHERE `charactermodels`.`categoryid` = $categoryid AND `charactercategorys`.`categoryid` = $categoryid;";
+$command = "SELECT * FROM `vehicles`";
 
 foreach ($pdo->query($command) as $row)
 {
-    echo "<tr><td><p>".$row["modelname"]."</p></td><td>";
+    echo "<tr><td><p>".$row["vehiclename"]."</p></td><td>";
     if ($row['image'] === "1") {
-        echo "<img class=\"lozad\" data-src=\"/images/models/".$row["categoryname"]."/".$row["modelname"].".webp\"></img>";
+        echo "<img class=\"lozad\" data-src=\"/images/vehicles/".$row["vehiclename"].".webp\"></img>";
     } else {
         echo "<img class=\"lozad\" data-src=\"/images/icons/placeholder.svg\"></img>";
     }
