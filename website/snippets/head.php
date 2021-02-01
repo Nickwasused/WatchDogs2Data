@@ -23,6 +23,12 @@ echo "<html>
 		<li>
 			<a href=\"/#vehicles\">Vehicles</a>
 		</li>
+		<li>
+			<a href=\"/#lmalayers\">LMALayers</a>
+		</li>
+		<li>
+			<a href=\"/#weathertypes\">Weather Types</a>
+		</li>
 	</ul> 
 </header>
 <body>

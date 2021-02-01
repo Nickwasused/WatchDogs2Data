@@ -3,17 +3,20 @@ include("../../snippets/head.php");
 include("../../snippets/blocksnap.php");
 echo "
 <div class=\"contentstart lozad\" data-background-image=\"/images/backgrounds/background3.webp\">
-<div class=\"imagefilter\">";
+<div class=\"imagefilter\">
+<div class=\"row\">";
 	
 $categorys = "SELECT * FROM `charactercategorys`";
 
 foreach ($pdo->query($categorys) as $row)
 {
-	echo "<h3><a href=\"./characters.php?categoryid=".$row["categoryid"]."\">".$row["categoryname"]."</a></h3>\n";
+	echo "<div class=\"categorycolumn\"><div class=\"category\"><table><tr><td><a href=\"./characters.php?categoryid=".$row["categoryid"]."\">".$row["categoryname"]."</a></td><td>
+	<img src=\"/images/models/categorys/".$row["categoryname"].".webp\"></td></tr></table></div></div>\n";
 }
 
 echo"	
-	</div>
+</div>
+</div>
 </div>
 
 </body>
