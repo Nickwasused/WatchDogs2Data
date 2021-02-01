@@ -1,8 +1,13 @@
 <?php
+error_reporting(E_ERROR);
 include("login.php");
 echo "<html>
 <head>
 	<title>Watch Dogs 2 Data | Nickwasused</title>
+	<meta charset=\"UTF-8\">
+	<meta name=\"description\" content=\"Watch Dogs 2 data\">
+	<meta name=\"keywords\" content=\"Watch Dogs 2, Data, modding\">
+	<meta name=\"author\" content=\"Nickwasused\">
 	<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">
 	<link type='text/css' rel='stylesheet' href='/css/main.css'>
 </head>

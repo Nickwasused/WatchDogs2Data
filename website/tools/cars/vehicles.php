@@ -1,6 +1,8 @@
 <?php
 include("../../snippets/head.php");
 
+$modelname=$_REQUEST["modelname"];
+
 $page = 1;
 if(!empty($_GET['page'])) {
     $page = filter_input(INPUT_GET, 'page', FILTER_VALIDATE_INT);
@@ -8,21 +10,35 @@ if(!empty($_GET['page'])) {
         $page = 1;
     }
 }
+
+if (!empty($modelname)) {
+    $command = "SELECT * FROM `vehicles` WHERE `vehiclename` LIKE '%".$modelname."%' ";
+} else {
+    $command = "SELECT * FROM `vehicles`";
+}
+
 include("../../snippets/blocksnap.php");
 echo "
 <a id=\"top\"></a>
 <div class=\"contentstart lozad\" data-background-image=\"/images/backgrounds/background3.webp\">
 <div class=\"imagefilter\">
+<center><button class=\"button button1\"><a href=\"./vehicles.php\">reset</a></button></center>
 <table>
 <thead>
 <tr>
 <td>modelname</td>
 <td>image</td>
 </tr>
+<tr>
+    <td>
+        <form>
+            <input type=text name=\"modelname\">
+            <input class=\"button3\" type=submit>
+        </form>
+    </td>
+    <td></td>
 </thead>
 <tbody>";
-	
-$command = "SELECT * FROM `vehicles`";
 
 foreach ($pdo->query($command) as $row)
 {

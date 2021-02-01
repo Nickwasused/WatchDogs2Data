@@ -2,6 +2,7 @@
 include("../../snippets/head.php");
 
 $categoryid=$_REQUEST["categoryid"];
+$modelname=$_REQUEST["modelname"];
 
 $page = 1;
 if(!empty($_GET['page'])) {
@@ -10,22 +11,38 @@ if(!empty($_GET['page'])) {
         $page = 1;
     }
 }
+
+if (!empty($modelname)) {
+    $command = "SELECT * FROM `charactermodels`,`charactercategorys` WHERE `modelname` LIKE '%".$modelname."%' AND `charactercategorys`.`categoryid` = $categoryid;";
+} else {
+    $command = "SELECT * FROM `charactermodels`,`charactercategorys` WHERE `charactermodels`.`categoryid` = $categoryid AND `charactercategorys`.`categoryid` = $categoryid;";
+}
+
 include("../../snippets/blocksnap.php");
 echo "
 <a id=\"top\"></a>
 <div class=\"contentstart lozad\" data-background-image=\"/images/backgrounds/background3.webp\">
 <div class=\"imagefilter\">
+<center><button class=\"button button1\"><a href=\"./characters.php?categoryid=".$categoryid."\">reset</a></button></center>
 <table>
 <thead>
 <tr>
-<td>modelname</td>
-<td>image</td>
+    <td>modelname</td>
+    <td>image</td>
+</tr>
+<tr>
+    <td>
+        <form>
+            <input type=hidden name=\"categoryid\" value=\"$categoryid\">
+            <input type=text name=\"modelname\">
+            <input class=\"button3\" type=submit>
+        </form>
+    </td>
+    <td></td>
 </tr>
 </thead>
 <tbody>";
 	
-$command = "SELECT * FROM `charactermodels`,`charactercategorys` WHERE `charactermodels`.`categoryid` = $categoryid AND `charactercategorys`.`categoryid` = $categoryid;";
-
 foreach ($pdo->query($command) as $row)
 {
     echo "<tr><td><p>".$row["modelname"]."</p></td><td>";
