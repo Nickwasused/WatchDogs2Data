@@ -11,7 +11,7 @@ $categorys = "SELECT * FROM `charactercategorys`";
 foreach ($pdo->query($categorys) as $row)
 {
 	echo "<div class=\"categorycolumn\"><div class=\"category\"><table><tr><td><a href=\"./characters.php?categoryid=".$row["categoryid"]."\">".$row["categoryname"]."</a></td><td>
-	<img src=\"/images/models/categorys/".$row["categoryname"].".webp\"></td></tr></table></div></div>\n";
+	<img class=\"lozad\" data-src=\"/images/models/categorys/".$row["categoryname"].".webp\"></td></tr></table></div></div>\n";
 }
 
 echo"	
