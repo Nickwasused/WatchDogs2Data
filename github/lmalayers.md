@@ -3,7 +3,7 @@
 ## raw-data
 [lmalayer-list](../rawdata/lmalayers/lmalayers.txt)
 
-### categorys
+### LMALayers
 | id | name | realname
 | -------------- | :--------- | :--------- |
 |1|[Generic](#Generic)|Generic
