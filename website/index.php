@@ -14,7 +14,7 @@ echo "
 		<a id=\"characters\"></a>
 		<h1>Character Models</h1>
 		<h2>List of all Watch Dogs 2 Character Models</h2>
-		<center><a href=\"./tools/characters/categorys.php\"><img class=\"icon\" src=\"/images/icons/char.svg\"></img></a></center>
+		<center><a href=\"./tools/characters/categories.php\"><img class=\"icon\" src=\"/images/icons/char.svg\"></img></a></center>
 	</div>
 </div>
 
@@ -32,7 +32,7 @@ echo "
 		<a id=\"lmalayers\"></a>
 		<h1>LMA Layers</h1>
 		<h2>List of all Watch Dogs 2 LMA Layers</h2>
-		<center><a href=\"./tools/cars/vehicles.php\"><img class=\"icon\" src=\"/images/icons/layers.svg\"></img></a></center>
+		<center><a href=\"./tools/lmalayers/lmalayers.php\"><img class=\"icon\" src=\"/images/icons/layers.svg\"></img></a></center>
 	</div>
 </div>
 
