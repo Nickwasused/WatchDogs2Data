@@ -1,0 +1,12 @@
+|1|Generic|Generic
+|2|Coop|Coop
+|3|Drone Race|Drone Race
+|4|IOP|IOP
+|5|Oakwood|Oakwood (Town)
+|6|San Francisco|San Francisco (Town)
+|7|Silicon Valley|Silicon Valley
+|8|Marin|Marin
+|9|World Stories - Solo|Story
+|10|World Stories - Light|L
+|11|PL|PL
+|12|Debug|Debug
