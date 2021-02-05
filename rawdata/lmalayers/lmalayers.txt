@@ -530,7 +530,7 @@ s24m025_progression
 s24m030_progression
 
 10 World Stories - Light
-Lua] l02m000_progression
+l02m000_progression
 l02m010_progression
 l02m020_progression
 l02m030_progression
@@ -606,7 +606,7 @@ l36m020_progression
 l36m020_redzone_progression
 
 11 PL
-Lua] temp_playgo_hma
+temp_playgo_hma
 test_jf_hma
 test_jf_sas
 test_race_coastmountain_activation

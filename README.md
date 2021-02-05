@@ -9,3 +9,5 @@ Watch Dogs 2 Data
 
 [character models](github/characters.md)<br>
 [vehicles](github/vehicles.md)
+[weather](github/weather.md)
+[lmalayers](github/lmalayers.md)
