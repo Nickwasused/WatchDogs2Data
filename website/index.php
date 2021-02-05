@@ -14,7 +14,7 @@ echo "
 		<a id=\"characters\"></a>
 		<h1>Character Models</h1>
 		<h2>List of all Watch Dogs 2 Character Models</h2>
-		<center><a href=\"./tools/characters/categories.php\"><img class=\"icon\" src=\"/images/icons/char.svg\"></img></a></center>
+		<center><a href=\"./tools/characters/characters.php\"><img class=\"icon\" src=\"/images/icons/char.svg\"></img></a></center>
 	</div>
 </div>
 

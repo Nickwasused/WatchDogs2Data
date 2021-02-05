@@ -12,6 +12,9 @@ if(!empty($_GET['page'])) {
     }
 }
 
+$items_per_page = 25;
+$offset = ($page - 1) * $items_per_page;
+
 if (!empty($lmalayer)) {
     $command = "SELECT * FROM `lmalayers` WHERE `lmalayer` LIKE '%".$lmalayer."%';";
 } else if (!empty($lmalayercategoryid)) {
