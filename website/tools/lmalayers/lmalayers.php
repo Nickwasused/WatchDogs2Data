@@ -2,6 +2,7 @@
 include("../../snippets/head.php");
 
 $lmalayer=$_REQUEST["lmalayer"];
+$lmalayercategoryid=$_REQUEST["lmalayercategoryid"];
 
 $page = 1;
 if(!empty($_GET['page'])) {
@@ -13,6 +14,8 @@ if(!empty($_GET['page'])) {
 
 if (!empty($lmalayer)) {
     $command = "SELECT * FROM `lmalayers` WHERE `lmalayer` LIKE '%".$lmalayer."%';";
+} else if (!empty($lmalayercategoryid)) {
+    $command = "SELECT * FROM `lmalayers` WHERE `lmalayercategory` = $lmalayercategoryid;";
 } else {
     $command = "SELECT * FROM `lmalayers`;";
 }
@@ -26,11 +29,24 @@ echo "
 <table>
 <thead>
 <tr>
+    <td>category</td>
     <td>layername</td>
     <td>location</td>
     <td>image</td>
 </tr>
 <tr>
+    <td>
+    <form>
+        <select name=\"lmalayercategoryid\" id=\"lmalayercategoryid\">";
+        $lmalayercategories = "SELECT * FROM `lmalayercategories`;";
+        foreach ($pdo->query($lmalayercategories) as $rowcategories)
+        {
+            echo "<option value=\"".$rowcategories["lmalayercategoryid"]."\">".$rowcategories["lmacategoryname"]."</option>";
+        }
+        echo "</select>
+        <input class=\"button3\" type=submit>
+    </form>
+    </td>
     <td>
         <form>
             <input type=text name=\"lmalayer\">
@@ -38,15 +54,22 @@ echo "
         </form>
     </td>
     <td></td>
+    <td></td>
 </tr>
 </thead>
 <tbody>";
 	
 foreach ($pdo->query($command) as $row)
 {
-    echo "<tr><td><p>".$row["lmalayer"]."</p></td><td>";
-    if (!empty($row["location"])) {
-        echo "<p>".$row["location"]."</p></td>";
+    $categoryname = "SELECT * FROM `lmalayercategories` WHERE `lmalayercategoryid` = ".$row["lmalayercategory"].";";
+    foreach ($pdo->query($categoryname) as $rowcategoryname)
+    {
+        echo "<tr><td>".$rowcategoryname["lmacategoryname"]."</td>";
+    }
+    echo "<td><p>".$row["lmalayer"]."</p></td>";
+
+    if (!empty($row["lmalocation"])) {
+        echo "<td><p>".$row["lmalocation"]."</p></td>";
     } else {
         echo "<td></td>";
     }
@@ -54,7 +77,7 @@ foreach ($pdo->query($command) as $row)
     echo "<td>";
 
     if ($row['image'] === "1") {
-        echo "<img class=\"lozad\" data-src=\"/images/lmalayers/".$row["lmalayer"].".webp\"></img>";
+        echo "<a href=\"/images/lmalayers/".$rowcategoryname["lmacategoryname"]."/".$row["lmalayer"].".webp\" target=\"_blank\"><img class=\"lozad\" data-src=\"/images/lmalayers/".$rowcategoryname["lmacategoryname"]."/".$row["lmalayer"].".webp\"></img></a>";
     } else {
         echo "<img class=\"lozad\" data-src=\"/images/icons/placeholder.svg\"></img>";
     }
