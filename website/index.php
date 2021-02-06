@@ -41,7 +41,7 @@ echo "
 		<a id=\"weathertypes\"></a>
 		<h1>Weather Types</h1>
 		<h2>List of all Watch Dogs 2 Weather Types</h2>
-		<center><a href=\"./tools/cars/vehicles.php\"><img class=\"icon\" src=\"/images/icons/weather.svg\"></img></a></center>
+		<center><a href=\"./tools/weather/weather.php\"><img class=\"icon\" src=\"/images/icons/weather.svg\"></img></a></center>
 	</div>
 </div>
 

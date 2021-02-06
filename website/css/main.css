@@ -159,7 +159,11 @@ td:nth-child(odd) {
 }
 
 table img {
-	max-width : 250px;
+	max-width : 500px;
+}
+
+td video {
+	max-width : 500px; 
 }
 
 .button {

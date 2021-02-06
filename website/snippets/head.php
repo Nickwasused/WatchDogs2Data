@@ -1,5 +1,7 @@
 <?php
+#disable page errors
 error_reporting(E_ERROR);
+#connect to database
 include("login.php");
 echo "<html>
 <head>

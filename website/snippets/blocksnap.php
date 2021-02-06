@@ -1,4 +1,5 @@
 <?php
+# block the snapping in the header of the page
 echo "
 <style>
 header {

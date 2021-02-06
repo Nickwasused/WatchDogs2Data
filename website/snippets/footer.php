@@ -1,4 +1,7 @@
 <?php
+# terminate the database connection
+$pdo = null;
+
 echo "
 <footer>
 	<!-- start image Lazy Loading -->

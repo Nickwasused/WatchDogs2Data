@@ -44,7 +44,12 @@ foreach ($pdo->query($command) as $row)
 {
     echo "<tr><td><p>".$row["vehiclename"]."</p></td><td>";
     if ($row['image'] === "1") {
-        echo "<img class=\"lozad car\" data-src=\"/images/vehicles/".$row["vehiclename"].".webp\"></img>";
+        echo "
+        <picture class=\"lozad\">
+            <source srcset=\"/images/avif/vehicles/".$row["vehiclename"].".avif\">
+            <source srcset=\"/images/webp/vehicles/".$row["vehiclename"].".webp\">
+            <img src=\"/images/webp/vehicles/".$row["vehiclename"].".webp\" alt=\"\"></noscript>
+        </picture>";
     } else {
         echo "<img class=\"lozad\" data-src=\"/images/icons/placeholder.svg\"></img>";
     }

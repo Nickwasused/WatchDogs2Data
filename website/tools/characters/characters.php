@@ -68,7 +68,11 @@ if ($skip == "false") {
         }
         echo "<td><p>".$row["modelname"]."</p></td><td>";
         if ($row['image'] === "1") {
-            echo "<img class=\"lozad\" data-src=\"/images/models/".$row["categoryname"]."/".$row["modelname"].".webp\"></img>";
+            echo "<picture class=\"lozad\">
+                    <source srcset=\"/images/avif/models/".$row["categoryname"]."/".$row["modelname"].".avif\">
+                    <source srcset=\"/images/webp/models/".$row["categoryname"]."/".$row["modelname"].".webp\">
+                    <img src=\"/images/webp/models/".$row["categoryname"]."/".$row["modelname"].".webp\" alt=\"\"></noscript>
+                </picture>";
         } else {
             echo "<img class=\"lozad\" data-src=\"/images/icons/placeholder.svg\"></img>";
         }
