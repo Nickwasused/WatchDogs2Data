@@ -11,3 +11,7 @@ Watch Dogs 2 Data
 [vehicles](github/vehicles.md)<br>
 [weather](github/weather.md)<br>
 [lmalayers](github/lmalayers.md)<br>
+
+## Scripthook guide/tweaks
+
+[here!](github/scripthook/index.md)<br>
