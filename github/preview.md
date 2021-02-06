@@ -8,3 +8,9 @@
 
 ## Vehicle preview
 ![vehicle](preview3.webp)
+
+## LMALayer preview
+![lmalayer](preview4.webp)
+
+## Weather preview
+![weather](preview5.webp)
