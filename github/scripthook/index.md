@@ -5,9 +5,9 @@
 ```
 LoadLMALayer(name, "0", loadingstate, function()end, "")
 ```
-name: This is the name of the LMYLayer you want to load.
-"0": not known
-loadingstate: If 0: When you load a LoadLMALayer every other one is getting unloaded e.g. shops. If it is 1 then you can load unlimited LMALayers (maybe causing performance issues). 
+name: This is the name of the LMYLayer you want to load.<br>
+"0": not known<br>
+loadingstate: If 0: When you load a LoadLMALayer every other one is getting unloaded e.g. shops. If it is 1 then you can load unlimited LMALayers (maybe causing performance issues). <br>
 
 #### Example command
 ```
