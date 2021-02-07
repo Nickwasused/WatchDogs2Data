@@ -11,13 +11,13 @@ if(!empty($_GET['page'])) {
     }
 }
 
-$items_per_page = 25;
+$searchoptions = array("weathername");
 $offset = ($page - 1) * $items_per_page;
 
 if (!empty($weathername)) {
-    $command = "SELECT * FROM `weather` WHERE `weathername` LIKE '%".$weathername."%';";
+    $command = "SELECT * FROM `weather` WHERE `weathername` LIKE '%".$weathername."%' AND `weatherid` >= $offset LIMIT $items_per_page;";
 } else {
-    $command = "SELECT * FROM `weather`;";
+    $command = "SELECT * FROM `weather` WHERE `weatherid` >= $offset LIMIT $items_per_page;";
 }
 
 include("../../snippets/blocksnap.php");
@@ -25,7 +25,30 @@ echo "
 <a id=\"top\"></a>
 <div class=\"contentstart lozad\" data-background-image=\"/images/backgrounds/background3.webp\">
 <div class=\"imagefilter\">
-<center><button class=\"button button1 resetbutton\"><a href=\"./weather.php\">reset</a></button></center>
+<center><button class=\"button button1 resetbutton\"><a href=\"./weather.php\">reset</a></button></center>";
+
+$number = 0;
+foreach ($searchoptions as $value) {
+	if (!empty(${$value})) {
+		if ($page==1) {
+			echo "<center><button class=\"button button2\"><a href=\"./weather.php?".$value."=".${$value}."&page=".($page+1)."\">next page</a></button></center>";
+		} else {
+			echo "<center><button class=\"button button1\"><a href=\"./weather.php?".$value."=".${$value}."&page=".($page-1)."\">previous page</a></button><button class=\"button button2\"><a href=\"./weather.php?categoryid=$categoryid&".$value."=".${$value}."&page=".($page+1)."\">next page</a></button></center>";
+		}
+		$number++;
+	}
+}
+
+if ($number===1) {}
+else {
+	if ($page===1) {
+		echo "<center><button class=\"button button2\"><a href=\"./weather.php?page=".($page+1)."\">next page</a></button></center>";
+	} else {
+		echo "<center><button class=\"button button1\"><a href=\"./weather.php?page=".($page-1)."\">previous page</a></button>  <button class=\"button button2\"><a href=\"./weather.php?categoryid=$categoryid&page=".($page+1)."\">next page</a></button></center>";
+	}
+}
+
+echo "
 <table>
 <thead>
 <tr>
@@ -63,7 +86,30 @@ foreach ($pdo->query($command) as $row)
 echo"
 </tbody>
 </table>
-<center><a href=\"#top\"><button class=\"button button3 topbutton\">top</button></a></center>
+<center><a href=\"#top\"><button class=\"button button3 topbutton\">top</button></a></center>";
+
+$number2 = 0;
+foreach ($searchoptions as $value) {
+	if (!empty(${$value})) {
+		if ($page==1) {
+			echo "<center><button class=\"button button2\"><a href=\"./weather.php?categoryid=$categoryid&".$value."=".${$value}."&page=".($page+1)."\">next page</a></button></center>";
+		} else {
+			echo "<center><button class=\"button button1\"><a href=\"./weather.php?categoryid=$categoryid&".$value."=".${$value}."&page=".($page-1)."\">previous page</a></button><button class=\"button button2\"><a href=\"./weather.php?categoryid=$categoryid&".$value."=".${$value}."&page=".($page+1)."\">next page</a></button></center>";
+		}
+		$number2++;
+	}
+}
+
+if ($number2===1) {}
+else {
+	if ($page===1) {
+		echo "<center><button class=\"button button2\"><a href=\"./weather.php?categoryid=$categoryid&page=".($page+1)."\">next page</a></button></center>";
+	} else {
+		echo "<center><button class=\"button button1\"><a href=\"./weather.php?categoryid=$categoryid&page=".($page-1)."\">previous page</a></button>  <button class=\"button button2\"><a href=\"./weather.php?categoryid=$categoryid&page=".($page+1)."\">next page</a></button></center>";
+	}
+}
+
+echo "
 </div>
 </div>
 

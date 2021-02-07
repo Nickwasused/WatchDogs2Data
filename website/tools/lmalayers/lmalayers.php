@@ -12,15 +12,15 @@ if(!empty($_GET['page'])) {
     }
 }
 
-$items_per_page = 25;
+$searchoptions = array("lmalayer", "lmalayercategoryid");
 $offset = ($page - 1) * $items_per_page;
 
 if (!empty($lmalayer)) {
-    $command = "SELECT * FROM `lmalayers` WHERE `lmalayer` LIKE '%".$lmalayer."%';";
+    $command = "SELECT * FROM `lmalayers` WHERE `lmalayer` LIKE '%".$lmalayer."%' AND `lmalayerid` >= $offset LIMIT $items_per_page;";
 } else if (!empty($lmalayercategoryid)) {
-    $command = "SELECT * FROM `lmalayers` WHERE `lmalayercategory` = $lmalayercategoryid;";
+    $command = "SELECT * FROM `lmalayers` WHERE `lmalayercategory` = $lmalayercategoryid AND `lmalayerid` >= $offset LIMIT $items_per_page;";
 } else {
-    $command = "SELECT * FROM `lmalayers`;";
+    $command = "SELECT * FROM `lmalayers` WHERE `lmalayerid` >= $offset LIMIT $items_per_page;";
 }
 
 include("../../snippets/blocksnap.php");
@@ -28,7 +28,30 @@ echo "
 <a id=\"top\"></a>
 <div class=\"contentstart lozad\" data-background-image=\"/images/backgrounds/background3.webp\">
 <div class=\"imagefilter\">
-<center><button class=\"button button1 resetbutton\"><a href=\"./lmalayers.php\">reset</a></button></center>
+<center><button class=\"button button1 resetbutton\"><a href=\"./lmalayers.php\">reset</a></button></center>";
+
+$number = 0;
+foreach ($searchoptions as $value) {
+	if (!empty(${$value})) {
+		if ($page==1) {
+			echo "<center><button class=\"button button2\"><a href=\"./lmalayers.php?".$value."=".${$value}."&page=".($page+1)."\">next page</a></button></center>";
+		} else {
+			echo "<center><button class=\"button button1\"><a href=\"./lmalayers.php?".$value."=".${$value}."&page=".($page-1)."\">previous page</a></button><button class=\"button button2\"><a href=\"./lmalayers.php?".$value."=".${$value}."&page=".($page+1)."\">next page</a></button></center>";
+		}
+		$number++;
+	}
+}
+
+if ($number===1) {}
+else {
+	if ($page===1) {
+		echo "<center><button class=\"button button2\"><a href=\"./lmalayers.php?page=".($page+1)."\">next page</a></button></center>";
+	} else {
+		echo "<center><button class=\"button button1\"><a href=\"./lmalayers.php?page=".($page-1)."\">previous page</a></button>  <button class=\"button button2\"><a href=\"./lmalayers.php?page=".($page+1)."\">next page</a></button></center>";
+	}
+}
+
+echo "
 <table>
 <thead>
 <tr>
@@ -95,7 +118,30 @@ foreach ($pdo->query($command) as $row)
 echo"
 </tbody>
 </table>
-<center><a href=\"#top\"><button class=\"button button3 topbutton\">top</button></a></center>
+<center><a href=\"#top\"><button class=\"button button3 topbutton\">top</button></a></center>";
+
+$number2 = 0;
+foreach ($searchoptions as $value) {
+	if (!empty(${$value})) {
+		if ($page==1) {
+			echo "<center><button class=\"button button2\"><a href=\"./lmalayers.php?".$value."=".${$value}."&page=".($page+1)."\">next page</a></button></center>";
+		} else {
+			echo "<center><button class=\"button button1\"><a href=\"./lmalayers.php?".$value."=".${$value}."&page=".($page-1)."\">previous page</a></button><button class=\"button button2\"><a href=\"./lmalayers.php?".$value."=".${$value}."&page=".($page+1)."\">next page</a></button></center>";
+		}
+		$number2++;
+	}
+}
+
+if ($number2===1) {}
+else {
+	if ($page===1) {
+		echo "<center><button class=\"button button2\"><a href=\"./lmalayers.php?page=".($page+1)."\">next page</a></button></center>";
+	} else {
+		echo "<center><button class=\"button button1\"><a href=\"./lmalayers.php?page=".($page-1)."\">previous page</a></button>  <button class=\"button button2\"><a href=\"./lmalayers.php?page=".($page+1)."\">next page</a></button></center>";
+	}
+}
+
+echo "
 </div>
 </div>
 

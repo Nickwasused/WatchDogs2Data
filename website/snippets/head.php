@@ -1,4 +1,5 @@
 <?php
+$items_per_page = 10;
 #disable page errors
 error_reporting(E_ERROR);
 #connect to database
