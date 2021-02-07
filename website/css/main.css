@@ -200,6 +200,10 @@ a img:hover {
 	transform : scale(1.2);
 }
 
+p a {
+	color : white;
+}
+
 .button1 {background-color: #EC6762;} /* Red */
 .button2 {background-color: #4CAF50;} /* Green */
 .button3 {background-color: #008CBA;} /* Blue */

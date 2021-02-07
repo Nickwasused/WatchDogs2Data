@@ -44,8 +44,8 @@ echo "
 		<center><a href=\"./tools/weather/weather.php\"><img class=\"icon\" src=\"/images/icons/weather.svg\"></img></a></center>
 	</div>
 </div>
-
-</body>
 ";
 include("snippets/footer.php");
+echo "</body>
+</html>";
 ?>

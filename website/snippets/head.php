@@ -23,7 +23,8 @@ echo "<html>
 	<meta name=\"msapplication-TileImage\" content=\"/images/favicon/mstile-144x144.png\">
 	<meta name=\"msapplication-config\" content=\"/images/favicon/browserconfig.xml\">
 	<meta name=\"theme-color\" content=\"#ffffff\">
-	<link type='text/css' rel='stylesheet' href='/css/main.css'>
+	<!-- async css loading -->
+	<link type='text/css' rel='stylesheet' href='/css/main.css' media=\"none\" onload=\"if(media!='all')media='all'\">
 </head>
 <a id=\"home\"></a>
 <header>

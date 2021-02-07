@@ -112,8 +112,8 @@ else {
 echo "
 </div>
 </div>
-
-</body>
 ";
 include("../../snippets/footer.php");
+echo "</body>
+</html>";
 ?>
