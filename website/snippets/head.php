@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 $items_per_page = 10;
 #disable page errors
