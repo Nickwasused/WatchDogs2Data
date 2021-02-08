@@ -9,3 +9,5 @@ jobs:
         uses: actions/checkout@v1
       - name: PHP syntax checker 8.0
         uses: StephaneBour/actions-php-lint@8.0
+        with:
+          dir: './website'
