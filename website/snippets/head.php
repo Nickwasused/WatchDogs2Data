@@ -4,7 +4,7 @@ $items_per_page = 10;
 #disable page errors
 error_reporting(E_ERROR);
 #connect to database
-include("login.php");
+require("login.php");
 echo "<html>
 <head>
 	<a id=\"top\"></a>

@@ -23,29 +23,10 @@ if (!empty($modelname)) {
 include("../../snippets/blocksnap.php");
 echo "
 <div class=\"contentstart lozad\" data-background-image=\"/images/backgrounds/background3.webp\">
-<div class=\"imagefilter\">
-<center><button class=\"button button1 resetbutton\"><a href=\"./vehicles.php\">reset</a></button></center>";
+<div class=\"imagefilter\">";
 
-$number = 0;
-foreach ($searchoptions as $value) {
-	if (!empty(${$value})) {
-		if ($page==1) {
-			echo "<center><button class=\"button button2\"><a href=\"./vehicles.php?".$value."=".${$value}."&page=".($page+1)."\">next page</a></button></center>";
-		} else {
-			echo "<center><button class=\"button button1\"><a href=\"./vehicles.php?".$value."=".${$value}."&page=".($page-1)."\">previous page</a></button><button class=\"button button2\"><a href=\"./vehicles.php?".$value."=".${$value}."&page=".($page+1)."\">next page</a></button></center>";
-		}
-		$number++;
-	}
-}
-
-if ($number===1) {}
-else {
-	if ($page===1) {
-		echo "<center><button class=\"button button2\"><a href=\"./vehicles.php?page=".($page+1)."\">next page</a></button></center>";
-	} else {
-		echo "<center><button class=\"button button1\"><a href=\"./vehicles.php?page=".($page-1)."\">previous page</a></button>  <button class=\"button button2\"><a href=\"./vehicles.php?page=".($page+1)."\">next page</a></button></center>";
-	}
-}
+include("../../snippets/functions.php");
+buttonscycle($searchoptions, "vehicles.php", $page);
 
 echo "
 <table>
@@ -86,26 +67,7 @@ echo"
 </table>
 <center><a href=\"#top\"><button class=\"button button3 topbutton\">top</button></a></center>";
 
-$number2 = 0;
-foreach ($searchoptions as $value) {
-	if (!empty(${$value})) {
-		if ($page==1) {
-			echo "<center><button class=\"button button2\"><a href=\"./vehicles.php?".$value."=".${$value}."&page=".($page+1)."\">next page</a></button></center>";
-		} else {
-			echo "<center><button class=\"button button1\"><a href=\"./vehicles.php?".$value."=".${$value}."&page=".($page-1)."\">previous page</a></button><button class=\"button button2\"><a href=\"./vehicles.php?".$value."=".${$value}."&page=".($page+1)."\">next page</a></button></center>";
-		}
-		$number2++;
-	}
-}
-
-if ($number2===1) {}
-else {
-	if ($page===1) {
-		echo "<center><button class=\"button button2\"><a href=\"./vehicles.php?page=".($page+1)."\">next page</a></button></center>";
-	} else {
-		echo "<center><button class=\"button button1\"><a href=\"./vehicles.php?page=".($page-1)."\">previous page</a></button>  <button class=\"button button2\"><a href=\"./vehicles.php?page=".($page+1)."\">next page</a></button></center>";
-	}
-}
+buttonscycle($searchoptions, "vehicles.php", $page);
 
 echo "
 </div>
