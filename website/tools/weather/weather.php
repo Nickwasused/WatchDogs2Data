@@ -5,6 +5,7 @@ $weathername = getrequest($_REQUEST['weathername']);
 $page = pagesystem();
 
 $searchoptions = array("weathername");
+$valueneeded = array();
 $offset = ($page - 1) * $items_per_page;
 
 if (!empty($weathername)) {
@@ -18,7 +19,7 @@ echo "
 <div class=\"contentstart lozad\" data-background-image=\"/images/backgrounds/avif/background3.avif,/images/backgrounds/webp/background3.webp\">
 <div class=\"imagefilter\">";
 
-buttonscycle($searchoptions, "weather.php", $page);
+buttonscycle($searchoptions, "weather.php", $page, $valueneeded);
 
 echo "
 <table>
@@ -59,7 +60,7 @@ echo"
 </tbody>
 </table>";
 
-buttonscycle($searchoptions, "characters.php", $page);
+buttonscycle($searchoptions, "characters.php", $page, $valueneeded);
 
 echo "
 </div>

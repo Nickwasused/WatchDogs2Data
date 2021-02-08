@@ -5,6 +5,7 @@ $modelname = getrequest($_REQUEST['modelname']);
 $page = pagesystem();
 
 $searchoptions = array("modelname");
+$valueneeded = array();
 $offset = ($page - 1) * $items_per_page;
 
 if (!empty($modelname)) {
@@ -18,7 +19,7 @@ echo "
 <div class=\"contentstart lozad\" data-background-image=\"/images/backgrounds/avif/background3.avif,/images/backgrounds/webp/background3.webp\">
 <div class=\"imagefilter\">";
 
-buttonscycle($searchoptions, "vehicles.php", $page);
+buttonscycle($searchoptions, "vehicles.php", $page, $valueneeded);
 
 echo "
 <table>
@@ -59,7 +60,7 @@ echo"
 </table>
 <center><a href=\"#top\"><button class=\"button button3\">top</button></a></center>";
 
-buttonscycle($searchoptions, "vehicles.php", $page);
+buttonscycle($searchoptions, "vehicles.php", $page, $valueneeded);
 
 echo "
 </div>

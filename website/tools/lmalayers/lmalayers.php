@@ -6,7 +6,8 @@ $lmalayercategoryid = getrequest($_REQUEST['lmalayercategoryid']);
 
 $page = pagesystem();
 
-$searchoptions = array("lmalayer", "lmalayercategoryid");
+$searchoptions = array("lmalayer");
+$valueneeded = array("lmalayercategoryid");
 $offset = ($page - 1) * $items_per_page;
 
 if (!empty($lmalayer)) {
@@ -22,7 +23,7 @@ echo "
 <div class=\"contentstart lozad\" data-background-image=\"/images/backgrounds/avif/background3.avif,/images/backgrounds/webp/background3.webp\">
 <div class=\"imagefilter\">";
 
-buttonscycle($searchoptions, "lmalayers.php", $page);
+buttonscycle($searchoptions, "lmalayers.php", $page, $valueneeded);
 
 echo "
 <table>
@@ -48,6 +49,7 @@ echo "
     </td>
     <td>
         <form>
+            <input type=hidden name=\"lmalayercategoryid\" value=\"$lmalayercategoryid\">
             <input type=text name=\"lmalayer\">
             <input class=\"button3\" type=submit>
         </form>
@@ -92,7 +94,7 @@ echo"
 </tbody>
 </table>";
 
-buttonscycle($searchoptions, "lmalayers.php", $page);
+buttonscycle($searchoptions, "lmalayers.php", $page, $valueneeded);
 
 echo "
 </div>

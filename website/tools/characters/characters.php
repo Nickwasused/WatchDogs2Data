@@ -7,7 +7,8 @@ $skip = "false";
 
 $page = pagesystem();
 
-$searchoptions = array("modelname", "categoryid");
+$searchoptions = array("modelname");
+$valueneeded = array("categoryid");
 $offset = ($page - 1) * $items_per_page;
 
 if (!empty($modelname)) {
@@ -23,7 +24,7 @@ echo "
 <div class=\"contentstart lozad\" data-background-image=\"/images/backgrounds/avif/background3.avif,/images/backgrounds/webp/background3.webp\">
 <div class=\"imagefilter\">";
 
-buttonscycle($searchoptions, "characters.php", $page);
+buttonscycle($searchoptions, "characters.php", $page, $valueneeded);
 
 echo "
 <table>
@@ -86,7 +87,7 @@ echo"
 </tbody>
 </table>";
 
-buttonscycle($searchoptions, "characters.php", $page);
+buttonscycle($searchoptions, "characters.php", $page, $valueneeded);
 
 echo "
 </div>

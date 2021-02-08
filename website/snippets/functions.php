@@ -1,18 +1,37 @@
 <?php
-function buttonscycle($searchoptions, $returnfile, $page) {
+function buttonscycle($searchoptions, $returnfile, $page, $valueneeded) {
+    #create the default reset button
     echo "<center><button class=\"button button1 resetbutton\"><a href=\"./".$returnfile."\">reset</a></button></center>";
     $number = 0;
-    foreach ($searchoptions as $value) {
-        if (!empty($_REQUEST[$value])) {
-            if ($page==1) {
-                echo "<center><button class=\"button button2\"><a href=\"./$returnfile?".$value."=".$_REQUEST[$value]."&page=".($page+1)."\">next page</a></button></center>";
-            } else {
-                echo "<center><button class=\"button button1\"><a href=\"./$returnfile?".$value."=".$_REQUEST[$value]."&page=".($page-1)."\">previous page</a></button><button class=\"button button2\"><a href=\"./$returnfile?".$value."=".$_REQUEST[$value]."&page=".($page+1)."\">next page</a></button></center>";
-            }
-            $number++;
+
+    #define neededstring
+    $neededstring = "";
+
+    #query the required values
+    foreach ($valueneeded as $neededvalue) {
+        if (!empty($neededvalue)) {
+            #if the needed value is not empty then append it to the string
+            $neededstring = $neededstring . "&".$neededvalue."=".getrequest($_REQUEST[$neededvalue])."";
+        } else {
+            #do nothing
         }
     }
 
+    #query the searchoptions
+    foreach ($searchoptions as $value) {
+        #if the variable requested is not empty then create the according button for it
+        if (!empty($_REQUEST[$value])) {
+            if ($page==1) {
+                echo "<center><button class=\"button button2\"><a href=\"./$returnfile?".$value."=".$_REQUEST[$value]."".$neededstring."&page=".($page+1)."\">next page</a></button></center>";
+            } else {
+                echo "<center><button class=\"button button1\"><a href=\"./$returnfile?".$value."=".$_REQUEST[$value]."".$neededstring."&page=".($page-1)."\">previous page</a></button><button class=\"button button2\"><a href=\"./$returnfile?".$value."=".$_REQUEST[$value]."".$neededstring."&page=".($page+1)."\">next page</a></button></center>";
+            }
+            $number++;
+            break; 
+        }
+    }
+
+    #if a button got created above then do nothing, but when no button got created above then revert to the default buttons
     if ($number===1) {}
     else {
         if ($page===1) {
@@ -38,6 +57,7 @@ function pagesystem(){
 
 function getrequest(&$value, $default = null)
 {
+    #try to get a value by $_REQUEST if empty return null
     return isset($value) ? $value : $default;
 }
 ?>
