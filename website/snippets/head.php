@@ -7,6 +7,7 @@ error_reporting(E_ERROR);
 include("login.php");
 echo "<html>
 <head>
+	<a id=\"top\"></a>
 	<title>Watch Dogs 2 Data | Nickwasused</title>
 	<meta charset=\"UTF-8\">
 	<meta name=\"description\" content=\"Watch Dogs 2 data\">

@@ -22,7 +22,6 @@ if (!empty($weathername)) {
 
 include("../../snippets/blocksnap.php");
 echo "
-<a id=\"top\"></a>
 <div class=\"contentstart lozad\" data-background-image=\"/images/backgrounds/background3.webp\">
 <div class=\"imagefilter\">
 <center><button class=\"button button1 resetbutton\"><a href=\"./weather.php\">reset</a></button></center>";
