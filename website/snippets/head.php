@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 $items_per_page = 10;
+$version = "alpha";
 #disable page errors
 error_reporting(E_ERROR);
 #connect to database
@@ -27,6 +28,7 @@ echo "<html>
 	<meta name=\"theme-color\" content=\"#ffffff\">
 	<!-- async css loading -->
 	<link type='text/css' rel='stylesheet' href='/css/main.css' media=\"none\" onload=\"if(media!='all')media='all'\">
+	<!-- version : ".$version." -->
 </head>
 <a id=\"home\"></a>
 <header>

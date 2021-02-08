@@ -1,19 +1,13 @@
 <?php
 include("../../snippets/head.php");
-
+include("../../snippets/functions.php");
 $categoryid=$_REQUEST["categoryid"];
 $modelname=$_REQUEST["modelname"];
 $skip = "false";
 
-$page = 1;
-if(!empty($_GET['page'])) {
-    $page = filter_input(INPUT_GET, 'page', FILTER_VALIDATE_INT);
-    if(false === $page) {
-        $page = 1;
-    }
-}
+$page = pagesystem();
 
-$searchoptions = array("modelname");
+$searchoptions = array("modelname", "categoryid");
 $offset = ($page - 1) * $items_per_page;
 
 if (!empty($modelname)) {
@@ -26,10 +20,9 @@ if (!empty($modelname)) {
 
 include("../../snippets/blocksnap.php");
 echo "
-<div class=\"contentstart lozad\" data-background-image=\"/images/backgrounds/background3.webp\">
+<div class=\"contentstart lozad\" data-background-image=\"/images/backgrounds/avif/background3.avif,/images/backgrounds/webp/background3.webp\">
 <div class=\"imagefilter\">";
 
-include("../../snippets/functions.php");
 buttonscycle($searchoptions, "characters.php", $page);
 
 echo "
