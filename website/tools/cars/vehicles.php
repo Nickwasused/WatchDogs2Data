@@ -58,7 +58,7 @@ foreach ($pdo->query($command) as $row)
 echo"
 </tbody>
 </table>
-<center><a href=\"#top\"><button class=\"button button3 topbutton\">top</button></a></center>";
+<center><a href=\"#top\"><button class=\"button button3\">top</button></a></center>";
 
 buttonscycle($searchoptions, "vehicles.php", $page);
 

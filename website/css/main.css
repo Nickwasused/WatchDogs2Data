@@ -208,7 +208,6 @@ p a {
 .button2 {background-color: #4CAF50;} /* Green */
 .button3 {background-color: #008CBA;} /* Blue */
 .resetbutton {margin-top: 5%;}
-.topbutton {}
 
 input[type=submit] {
 	border          : none;
