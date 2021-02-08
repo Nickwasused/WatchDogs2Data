@@ -2,7 +2,7 @@
 include("../../snippets/head.php");
 include("../../snippets/functions.php");
 $categoryid = getrequest($_REQUEST['categoryid']);
-$lmalayercategoryid = getrequest($_REQUEST['lmalayercategoryid']);
+$modelname = getrequest($_REQUEST['modelname']);
 $skip = "false";
 
 $page = pagesystem();
@@ -12,7 +12,7 @@ $valueneeded = array("categoryid");
 $offset = ($page - 1) * $items_per_page;
 
 if (!empty($modelname)) {
-    $command = "SELECT * FROM `charactermodels`,`charactercategorys` WHERE `modelname` LIKE '%".$modelname."%' AND `characterid` >= $offset LIMIT $items_per_page;";
+    $command = "SELECT * FROM `charactermodels`,`charactercategorys` WHERE `modelname` LIKE '%".$modelname."%' AND `charactermodels`.`categoryid` = $categoryid AND `charactercategorys`.`categoryid` = $categoryid AND `characterid` >= $offset LIMIT $items_per_page;";
 } else if (!empty($categoryid)) {
     $command = "SELECT * FROM `charactermodels`,`charactercategorys` WHERE `charactermodels`.`categoryid` = $categoryid AND `charactercategorys`.`categoryid` = $categoryid AND `characterid` >= $offset LIMIT $items_per_page;";
 } else {
