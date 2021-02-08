@@ -51,7 +51,7 @@ foreach ($pdo->query($command) as $row)
         </video></td>";
 
     } else {
-        echo "<td></td>";
+        echo "<img class=\"lozad placeholdericon\" data-src=\"/images/icons/placeholder.svg\"></img>";
     }
     echo "</tr>\n";
 }

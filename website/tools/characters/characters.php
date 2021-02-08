@@ -73,7 +73,7 @@ if ($skip == "false") {
                     <img src=\"/images/webp/models/".$row["categoryname"]."/".$row["modelname"].".webp\" alt=\"\"></noscript>
                 </picture>";
         } else {
-            echo "<img class=\"lozad\" data-src=\"/images/icons/placeholder.svg\"></img>";
+            echo "<img class=\"lozad placeholdericon\" data-src=\"/images/icons/placeholder.svg\"></img>";
         }
         echo "</td></tr>\n";
     }

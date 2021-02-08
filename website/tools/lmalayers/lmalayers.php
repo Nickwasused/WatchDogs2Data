@@ -83,7 +83,7 @@ foreach ($pdo->query($command) as $row)
                     <img src=\"/images/webp/lmalayers/".$rowcategoryname["lmacategoryname"]."/".$row["lmalayer"].".webp\" alt=\"\"></noscript>
                 </picture></a>";
     } else {
-        echo "<img class=\"lozad\" data-src=\"/images/icons/placeholder.svg\"></img>";
+        echo "<img class=\"lozad placeholdericon\" data-src=\"/images/icons/placeholder.svg\"></img>";
     }
     echo "</td></tr>\n";
 }

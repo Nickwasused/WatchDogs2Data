@@ -109,8 +109,8 @@ li a {
 }
 
 .icon {
-	max-height : 250px;
-	height     : 250px;
+	max-height : 15em;
+	height     : 15em;
 }
 
 .car {
@@ -164,11 +164,15 @@ td:nth-child(odd) {
 }
 
 table img {
-	max-width : 500px;
+	width : 20em;
 }
 
 td video {
-	max-width : 500px; 
+	max-width : 20em; 
+}
+
+.placeholdericon {
+	width : 5em;
 }
 
 .button {
