@@ -1,8 +1,8 @@
 <?php
 include("../../snippets/head.php");
 include("../../snippets/functions.php");
-$categoryid=$_REQUEST["categoryid"];
-$modelname=$_REQUEST["modelname"];
+$categoryid = getrequest($_REQUEST['categoryid']);
+$lmalayercategoryid = getrequest($_REQUEST['lmalayercategoryid']);
 $skip = "false";
 
 $page = pagesystem();

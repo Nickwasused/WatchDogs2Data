@@ -1,8 +1,7 @@
 <?php
 include("../../snippets/head.php");
 include("../../snippets/functions.php");
-$modelname=$_REQUEST["modelname"];
-
+$modelname = getrequest($_REQUEST['modelname']);
 $page = pagesystem();
 
 $searchoptions = array("modelname");

@@ -1,8 +1,8 @@
 <?php
 include("../../snippets/head.php");
 include("../../snippets/functions.php");
-$lmalayer=$_REQUEST["lmalayer"];
-$lmalayercategoryid=$_REQUEST["lmalayercategoryid"];
+$lmalayer = getrequest($_REQUEST['lmalayer']);
+$lmalayercategoryid = getrequest($_REQUEST['lmalayercategoryid']);
 
 $page = pagesystem();
 

@@ -36,4 +36,8 @@ function pagesystem(){
 
 }
 
+function getrequest(&$value, $default = null)
+{
+    return isset($value) ? $value : $default;
+}
 ?>

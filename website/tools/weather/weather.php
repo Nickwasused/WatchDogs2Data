@@ -1,8 +1,7 @@
 <?php
 include("../../snippets/head.php");
 include("../../snippets/functions.php");
-$weathername=$_REQUEST["weathername"];
-
+$weathername = getrequest($_REQUEST['weathername']);
 $page = pagesystem();
 
 $searchoptions = array("weathername");
