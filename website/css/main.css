@@ -164,7 +164,7 @@ td:nth-child(odd) {
 }
 
 table img {
-	width : 20em;
+	max-width : 20em;
 }
 
 td video {
