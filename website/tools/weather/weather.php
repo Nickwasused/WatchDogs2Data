@@ -15,11 +15,7 @@ $searchoptions = array("weathername");
 $valueneeded = array();
 $offset = ($page - 1) * $items_per_page;
 
-if (($offset + $items_per_page) > ($pagesneeded * $items_per_page)) {
-    $nextpagebutton = "false";
-} else {
-    $nextpagebutton = "true";
-}
+$nextpagebutton = nextpagebutton($offset, $items_per_page, $pagesneeded);
 
 if (!empty($weathername)) {
     $command = "SELECT * FROM `weather` WHERE `weathername` LIKE '%".$weathername."%' AND `weatherid` >= $offset LIMIT $items_per_page;";

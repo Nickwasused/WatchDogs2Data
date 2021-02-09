@@ -86,4 +86,14 @@ function getrequest(&$value, $default = null)
     #try to get a value by $_REQUEST if empty return null
     return isset($value) ? $value : $default;
 }
+
+function nextpagebutton($offset, $items_per_page, $pagesneeded){
+    if (($offset + $items_per_page) > ($pagesneeded * $items_per_page)) {
+        $nextpagebutton = "false";
+        return $nextpagebutton;
+    } else {
+        $nextpagebutton = "true";
+        return $nextpagebutton;
+    }
+}
 ?>

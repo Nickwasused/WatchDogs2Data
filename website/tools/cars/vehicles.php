@@ -21,12 +21,7 @@ if (!empty($modelname)) {
     $command = "SELECT * FROM `vehicles` WHERE `vehicleid` >= $offset LIMIT $items_per_page;";
 }
 
-if (($offset + $items_per_page) > ($pagesneeded * $items_per_page)) {
-    $nextpagebutton = "false";
-} else {
-    $nextpagebutton = "true";
-}
-
+$nextpagebutton = nextpagebutton($offset, $items_per_page, $pagesneeded);
 
 include("../../snippets/blocksnap.php");
 echo "
