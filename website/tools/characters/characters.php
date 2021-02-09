@@ -5,6 +5,12 @@ $categoryid = getrequest($_REQUEST['categoryid']);
 $modelname = getrequest($_REQUEST['modelname']);
 $skip = "false";
 
+foreach ($pdo->query("SELECT MAX(characterid) FROM charactermodels;") as $sumrow) 
+{
+    $sum = $sumrow[0];
+}
+
+$pagesneeded = getpagesneeded($sum, $items_per_page);
 $page = pagesystem();
 
 $searchoptions = array("modelname");
@@ -19,12 +25,18 @@ if (!empty($modelname)) {
     $skip = "true";
 }
 
+if (($offset + $items_per_page) > ($pagesneeded * $items_per_page)) {
+    $nextpagebutton = "false";
+} else {
+    $nextpagebutton = "true";
+}
+
 include("../../snippets/blocksnap.php");
 echo "
 <div class=\"contentstart lozad\" data-background-image=\"/images/backgrounds/avif/background3.avif,/images/backgrounds/webp/background3.webp\">
 <div class=\"imagefilter\">";
 
-buttonscycle($searchoptions, "characters.php", $page, $valueneeded);
+buttonscycle($searchoptions, "characters.php", $page, $valueneeded, $nextpagebutton);
 
 echo "
 <table>
@@ -36,7 +48,7 @@ echo "
 </tr>
 <tr>
     <td>
-    <form>
+    <form action=\"#\" method=\"post\">
         <select name=\"categoryid\" id=\"categoryid\">";
         $charactercategories = "SELECT * FROM `charactercategorys`;";
         foreach ($pdo->query($charactercategories) as $rowcategories)
@@ -48,9 +60,9 @@ echo "
     </form>
     </td>
     <td>
-        <form>
+        <form action=\"#\" method=\"post\">
             <input type=hidden name=\"categoryid\" value=\"$categoryid\">
-            <input type=text name=\"modelname\">
+            <input type=text name=\"modelname\" value=\"".$modelname."\">
             <input class=\"button3\" type=submit>
         </form>
     </td>
@@ -87,7 +99,7 @@ echo"
 </tbody>
 </table>";
 
-buttonscycle($searchoptions, "characters.php", $page, $valueneeded);
+buttonscycle($searchoptions, "characters.php", $page, $valueneeded, $nextpagebutton);
 
 echo "
 </div>

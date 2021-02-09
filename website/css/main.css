@@ -35,23 +35,23 @@ body {
 }
 
 h1 {
-	font-size   : 8rem;
+	font-size   : 5.5em;
 	text-align  : center;
-	padding-top : 10vh;
+	padding-top : 1em;
 	margin      : 0px;
 	color       : white;
 }
 
 h2 {
-	font-size   : 5rem;
+	font-size   : 3.5em;
 	text-align  : center;
-	padding-top : 2vh;
+	padding-top : 0.25em;
 	color       : white;
 }
 
 h3,
 h3 a  {
-	font-size   : 3rem;
+	font-size   : 2.5em;
 	text-align  : center;
 	color       : white;
 }
@@ -109,8 +109,8 @@ li a {
 }
 
 .icon {
-	max-height : 15em;
-	height     : 15em;
+	max-height : 10em;
+	height     : 10em;
 }
 
 .car {

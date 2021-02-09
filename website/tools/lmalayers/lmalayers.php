@@ -4,6 +4,12 @@ include("../../snippets/functions.php");
 $lmalayer = getrequest($_REQUEST['lmalayer']);
 $lmalayercategoryid = getrequest($_REQUEST['lmalayercategoryid']);
 
+foreach ($pdo->query("SELECT MAX(lmalayerid) FROM lmalayers;") as $sumrow) 
+{
+    $sum = $sumrow[0];
+}
+
+$pagesneeded = getpagesneeded($sum, $items_per_page);
 $page = pagesystem();
 
 $searchoptions = array("lmalayer");
@@ -18,12 +24,18 @@ if (!empty($lmalayer)) {
     $command = "SELECT * FROM `lmalayers` WHERE `lmalayerid` >= $offset LIMIT $items_per_page;";
 }
 
+if (($offset + $items_per_page) > ($pagesneeded * $items_per_page)) {
+    $nextpagebutton = "false";
+} else {
+    $nextpagebutton = "true";
+}
+
 include("../../snippets/blocksnap.php");
 echo "
 <div class=\"contentstart lozad\" data-background-image=\"/images/backgrounds/avif/background3.avif,/images/backgrounds/webp/background3.webp\">
 <div class=\"imagefilter\">";
 
-buttonscycle($searchoptions, "lmalayers.php", $page, $valueneeded);
+buttonscycle($searchoptions, "lmalayers.php", $page, $valueneeded, $nextpagebutton);
 
 echo "
 <table>
@@ -36,7 +48,7 @@ echo "
 </tr>
 <tr>
     <td>
-    <form>
+    <form action=\"#\" method=\"post\">
         <select name=\"lmalayercategoryid\" id=\"lmalayercategoryid\">";
         $lmalayercategories = "SELECT * FROM `lmalayercategories`;";
         foreach ($pdo->query($lmalayercategories) as $rowcategories)
@@ -48,9 +60,9 @@ echo "
     </form>
     </td>
     <td>
-        <form>
+        <form action=\"#\" method=\"post\">
             <input type=hidden name=\"lmalayercategoryid\" value=\"$lmalayercategoryid\">
-            <input type=text name=\"lmalayer\">
+            <input type=text name=\"lmalayer\" value=\"".$lmalayer."\">
             <input class=\"button3\" type=submit>
         </form>
     </td>
@@ -94,7 +106,7 @@ echo"
 </tbody>
 </table>";
 
-buttonscycle($searchoptions, "lmalayers.php", $page, $valueneeded);
+buttonscycle($searchoptions, "lmalayers.php", $page, $valueneeded, $nextpagebutton);
 
 echo "
 </div>

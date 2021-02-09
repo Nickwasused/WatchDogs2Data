@@ -2,6 +2,13 @@
 include("../../snippets/head.php");
 include("../../snippets/functions.php");
 $modelname = getrequest($_REQUEST['modelname']);
+
+foreach ($pdo->query("SELECT MAX(vehicleid) FROM vehicles;") as $sumrow) 
+{
+    $sum = $sumrow[0];
+}
+
+$pagesneeded = getpagesneeded($sum, $items_per_page);
 $page = pagesystem();
 
 $searchoptions = array("modelname");
@@ -14,12 +21,19 @@ if (!empty($modelname)) {
     $command = "SELECT * FROM `vehicles` WHERE `vehicleid` >= $offset LIMIT $items_per_page;";
 }
 
+if (($offset + $items_per_page) > ($pagesneeded * $items_per_page)) {
+    $nextpagebutton = "false";
+} else {
+    $nextpagebutton = "true";
+}
+
+
 include("../../snippets/blocksnap.php");
 echo "
 <div class=\"contentstart lozad\" data-background-image=\"/images/backgrounds/avif/background3.avif,/images/backgrounds/webp/background3.webp\">
 <div class=\"imagefilter\">";
 
-buttonscycle($searchoptions, "vehicles.php", $page, $valueneeded);
+buttonscycle($searchoptions, "vehicles.php", $page, $valueneeded, $nextpagebutton);
 
 echo "
 <table>
@@ -30,8 +44,8 @@ echo "
 </tr>
 <tr>
     <td>
-        <form>
-            <input type=text name=\"modelname\">
+        <form action=\"#\" method=\"post\">
+            <input type=text name=\"modelname\" value=\"".$modelname."\">
             <input class=\"button3\" type=submit>
         </form>
     </td>
@@ -60,7 +74,7 @@ echo"
 </table>
 <center><a href=\"#top\"><button class=\"button button3\">top</button></a></center>";
 
-buttonscycle($searchoptions, "vehicles.php", $page, $valueneeded);
+buttonscycle($searchoptions, "vehicles.php", $page, $valueneeded, $nextpagebutton);
 
 echo "
 </div>

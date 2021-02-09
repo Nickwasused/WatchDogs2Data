@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <?php
-$items_per_page = 10;
-$version = "alpha";
-#disable page errors
-error_reporting(E_ERROR);
 #connect to database
 require("login.php");
+require("constants.php");
 echo "<html>
 <head>
 	<a id=\"top\"></a>

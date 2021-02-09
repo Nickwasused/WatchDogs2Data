@@ -2,11 +2,24 @@
 include("../../snippets/head.php");
 include("../../snippets/functions.php");
 $weathername = getrequest($_REQUEST['weathername']);
+
+foreach ($pdo->query("SELECT MAX(weatherid) FROM weather;") as $sumrow) 
+{
+    $sum = $sumrow[0];
+}
+
+$pagesneeded = getpagesneeded($sum, $items_per_page);
 $page = pagesystem();
 
 $searchoptions = array("weathername");
 $valueneeded = array();
 $offset = ($page - 1) * $items_per_page;
+
+if (($offset + $items_per_page) > ($pagesneeded * $items_per_page)) {
+    $nextpagebutton = "false";
+} else {
+    $nextpagebutton = "true";
+}
 
 if (!empty($weathername)) {
     $command = "SELECT * FROM `weather` WHERE `weathername` LIKE '%".$weathername."%' AND `weatherid` >= $offset LIMIT $items_per_page;";
@@ -19,7 +32,7 @@ echo "
 <div class=\"contentstart lozad\" data-background-image=\"/images/backgrounds/avif/background3.avif,/images/backgrounds/webp/background3.webp\">
 <div class=\"imagefilter\">";
 
-buttonscycle($searchoptions, "weather.php", $page, $valueneeded);
+buttonscycle($searchoptions, "weather.php", $page, $valueneeded, $nextpagebutton);
 
 echo "
 <table>
@@ -30,8 +43,8 @@ echo "
 </tr>
 <tr>
     <td>
-    <form>
-            <input type=text name=\"weathername\">
+    <form action=\"#\" method=\"post\">
+            <input type=text name=\"weathername\" value=\"".$weathername."\">
             <input class=\"button3\" type=submit>
         </form>
     </td>
@@ -60,7 +73,7 @@ echo"
 </tbody>
 </table>";
 
-buttonscycle($searchoptions, "characters.php", $page, $valueneeded);
+buttonscycle($searchoptions, "weather.php", $page, $valueneeded, $nextpagebutton);
 
 echo "
 </div>
