@@ -11,13 +11,13 @@ $searchoptions = array("lmalayer");
 $valueneeded = array("lmalayercategoryid");
 
 if (!empty($lmalayer)) {
-    $command = "SELECT * FROM `lmalayers` WHERE `lmalayer` LIKE '%".$lmalayer."%' AND `lmalayerid` >= $offset LIMIT $items_per_page;";
+    $command = "SELECT * FROM `lmalayers` WHERE `lmalayer` LIKE '%".$lmalayer."%' LIMIT $items_per_page OFFSET $offset;";
     $filteroption = "WHERE `lmalayer` LIKE '%".$lmalayer."%';";
 } else if (!empty($lmalayercategoryid)) {
-    $command = "SELECT * FROM `lmalayers` WHERE `lmalayercategory` = $lmalayercategoryid AND `lmalayerid` >= $offset LIMIT $items_per_page;";
+    $command = "SELECT * FROM `lmalayers` WHERE `lmalayercategory` = $lmalayercategoryid LIMIT $items_per_page OFFSET $offset;";
     $filteroption = "WHERE `lmalayercategory` = $lmalayercategoryid;";
 } else {
-    $command = "SELECT * FROM `lmalayers` WHERE `lmalayerid` >= $offset LIMIT $items_per_page;";
+    $command = "SELECT * FROM `lmalayers` LIMIT $items_per_page OFFSET $offset;";
     $filteroption = ";";
 }
 

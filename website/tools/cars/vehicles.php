@@ -10,10 +10,10 @@ $searchoptions = array("modelname");
 $valueneeded = array();
 
 if (!empty($modelname)) {
-    $command = "SELECT * FROM `vehicles` WHERE `vehiclename` LIKE '%".$modelname."%' AND `vehicleid` >= $offset LIMIT $items_per_page;";
+    $command = "SELECT * FROM `vehicles` WHERE `vehiclename` LIKE '%".$modelname."%' LIMIT $items_per_page OFFSET $offset;";
     $filteroption = "WHERE `vehiclename` LIKE '%".$modelname."%';";
 } else {
-    $command = "SELECT * FROM `vehicles` WHERE `vehicleid` >= $offset LIMIT $items_per_page;";
+    $command = "SELECT * FROM `vehicles` LIMIT $items_per_page OFFSET $offset;";
     $filteroption = ";";
 }
 

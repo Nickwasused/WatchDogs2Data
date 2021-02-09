@@ -12,14 +12,15 @@ $searchoptions = array("modelname");
 $valueneeded = array("categoryid");
 
 if (!empty($modelname)) {
-    $command = "SELECT * FROM `charactermodels`,`charactercategorys` WHERE `modelname` LIKE '%".$modelname."%' AND `charactermodels`.`categoryid` = $categoryid AND `charactercategorys`.`categoryid` = $categoryid AND `characterid` >= $offset LIMIT $items_per_page;";
+    $command = "SELECT * FROM `charactermodels`,`charactercategorys` WHERE `modelname` LIKE '%".$modelname."%' AND `charactermodels`.`categoryid` = $categoryid AND `charactercategorys`.`categoryid` = $categoryid LIMIT $items_per_page OFFSET $offset;";
     #define the filteroption for the page system
     $filteroption = "WHERE `modelname` LIKE '%".$modelname."%' AND `charactermodels`.`categoryid` = $categoryid AND `charactercategorys`.`categoryid` = $categoryid;";
 } else if (!empty($categoryid)) {
-    $command = "SELECT * FROM `charactermodels`,`charactercategorys` WHERE `charactermodels`.`categoryid` = $categoryid AND `charactercategorys`.`categoryid` = $categoryid AND `characterid` >= $offset LIMIT $items_per_page;";
+    $command = "SELECT * FROM `charactermodels`,`charactercategorys` WHERE `charactermodels`.`categoryid` = $categoryid AND `charactercategorys`.`categoryid` = $categoryid LIMIT $items_per_page OFFSET $offset;";
     $filteroption = "WHERE `charactermodels`.`categoryid` = $categoryid;";
 } else {
     $filteroption = ";";
+    $command = "";
     $skip = "true";
 }
 

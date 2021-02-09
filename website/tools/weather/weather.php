@@ -7,11 +7,11 @@ $page = pagesystem();
 $offset = ($page - 1) * $items_per_page;
 
 if (!empty($weathername)) {
-    $command = "SELECT * FROM `weather` WHERE `weathername` LIKE '%".$weathername."%' AND `weatherid` >= $offset LIMIT $items_per_page;";
+    $command = "SELECT * FROM `weather` WHERE `weathername` LIKE '%".$weathername."%' LIMIT $items_per_page OFFSET $offset;";
     #define the filteroption for the page system
     $filteroption = "WHERE `weathername` LIKE '%".$weathername."%';";
 } else {
-    $command = "SELECT * FROM `weather` WHERE `weatherid` >= $offset LIMIT $items_per_page;";
+    $command = "SELECT * FROM `weather` LIMIT $items_per_page OFFSET $offset;";
     #define the filteroption for the page system
     $filteroption = ";";
 }
