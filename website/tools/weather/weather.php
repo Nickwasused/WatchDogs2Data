@@ -3,25 +3,31 @@ include("../../snippets/head.php");
 include("../../snippets/functions.php");
 $weathername = getrequest($_REQUEST['weathername']);
 
-foreach ($pdo->query("SELECT MAX(weatherid) FROM weather;") as $sumrow) 
+$page = pagesystem();
+$offset = ($page - 1) * $items_per_page;
+
+if (!empty($weathername)) {
+    $command = "SELECT * FROM `weather` WHERE `weathername` LIKE '%".$weathername."%' AND `weatherid` >= $offset LIMIT $items_per_page;";
+    #define the filteroption for the page system
+    $filteroption = "WHERE `weathername` LIKE '%".$weathername."%';";
+} else {
+    $command = "SELECT * FROM `weather` WHERE `weatherid` >= $offset LIMIT $items_per_page;";
+    #define the filteroption for the page system
+    $filteroption = ";";
+}
+
+#merge the count option with the filter
+$normalfilter = "SELECT COUNT(weatherid) FROM weather " . $filteroption;
+foreach ($pdo->query($normalfilter) as $sumrow) 
 {
     $sum = $sumrow[0];
 }
 
-$pagesneeded = getpagesneeded($sum, $items_per_page);
-$page = pagesystem();
-
 $searchoptions = array("weathername");
 $valueneeded = array();
-$offset = ($page - 1) * $items_per_page;
 
+$pagesneeded = getpagesneeded($sum, $items_per_page);
 $nextpagebutton = nextpagebutton($offset, $items_per_page, $pagesneeded);
-
-if (!empty($weathername)) {
-    $command = "SELECT * FROM `weather` WHERE `weathername` LIKE '%".$weathername."%' AND `weatherid` >= $offset LIMIT $items_per_page;";
-} else {
-    $command = "SELECT * FROM `weather` WHERE `weatherid` >= $offset LIMIT $items_per_page;";
-}
 
 include("../../snippets/blocksnap.php");
 echo "
@@ -39,7 +45,7 @@ echo "
 </tr>
 <tr>
     <td>
-    <form action=\"#\" method=\"post\">
+    <form>
             <input type=text name=\"weathername\" value=\"".$weathername."\">
             <input class=\"button3\" type=submit>
         </form>

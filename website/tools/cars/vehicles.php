@@ -3,26 +3,29 @@ include("../../snippets/head.php");
 include("../../snippets/functions.php");
 $modelname = getrequest($_REQUEST['modelname']);
 
-foreach ($pdo->query("SELECT MAX(vehicleid) FROM vehicles;") as $sumrow) 
+$page = pagesystem();
+$offset = ($page - 1) * $items_per_page;
+
+$searchoptions = array("modelname");
+$valueneeded = array();
+
+if (!empty($modelname)) {
+    $command = "SELECT * FROM `vehicles` WHERE `vehiclename` LIKE '%".$modelname."%' AND `vehicleid` >= $offset LIMIT $items_per_page;";
+    $filteroption = "WHERE `vehiclename` LIKE '%".$modelname."%';";
+} else {
+    $command = "SELECT * FROM `vehicles` WHERE `vehicleid` >= $offset LIMIT $items_per_page;";
+    $filteroption = ";";
+}
+
+#merge the count option with the filter
+$normalfilter = "SELECT COUNT(vehicleid) FROM vehicles " . $filteroption;
+foreach ($pdo->query($normalfilter) as $sumrow) 
 {
     $sum = $sumrow[0];
 }
 
 $pagesneeded = getpagesneeded($sum, $items_per_page);
-$page = pagesystem();
-
-$searchoptions = array("modelname");
-$valueneeded = array();
-$offset = ($page - 1) * $items_per_page;
-
-if (!empty($modelname)) {
-    $command = "SELECT * FROM `vehicles` WHERE `vehiclename` LIKE '%".$modelname."%' AND `vehicleid` >= $offset LIMIT $items_per_page;";
-} else {
-    $command = "SELECT * FROM `vehicles` WHERE `vehicleid` >= $offset LIMIT $items_per_page;";
-}
-
 $nextpagebutton = nextpagebutton($offset, $items_per_page, $pagesneeded);
-
 include("../../snippets/blocksnap.php");
 echo "
 <div class=\"contentstart lozad\" data-background-image=\"/images/backgrounds/avif/background3.avif,/images/backgrounds/webp/background3.webp\">
@@ -39,7 +42,7 @@ echo "
 </tr>
 <tr>
     <td>
-        <form action=\"#\" method=\"post\">
+        <form>
             <input type=text name=\"modelname\" value=\"".$modelname."\">
             <input class=\"button3\" type=submit>
         </form>

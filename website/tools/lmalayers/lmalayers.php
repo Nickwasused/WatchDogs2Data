@@ -4,26 +4,31 @@ include("../../snippets/functions.php");
 $lmalayer = getrequest($_REQUEST['lmalayer']);
 $lmalayercategoryid = getrequest($_REQUEST['lmalayercategoryid']);
 
-foreach ($pdo->query("SELECT MAX(lmalayerid) FROM lmalayers;") as $sumrow) 
+$page = pagesystem();
+$offset = ($page - 1) * $items_per_page;
+
+$searchoptions = array("lmalayer");
+$valueneeded = array("lmalayercategoryid");
+
+if (!empty($lmalayer)) {
+    $command = "SELECT * FROM `lmalayers` WHERE `lmalayer` LIKE '%".$lmalayer."%' AND `lmalayerid` >= $offset LIMIT $items_per_page;";
+    $filteroption = "WHERE `lmalayer` LIKE '%".$lmalayer."%';";
+} else if (!empty($lmalayercategoryid)) {
+    $command = "SELECT * FROM `lmalayers` WHERE `lmalayercategory` = $lmalayercategoryid AND `lmalayerid` >= $offset LIMIT $items_per_page;";
+    $filteroption = "WHERE `lmalayercategory` = $lmalayercategoryid;";
+} else {
+    $command = "SELECT * FROM `lmalayers` WHERE `lmalayerid` >= $offset LIMIT $items_per_page;";
+    $filteroption = ";";
+}
+
+#merge the count option with the filter
+$normalfilter = "SELECT COUNT(lmalayerid) FROM lmalayers " . $filteroption;
+foreach ($pdo->query($normalfilter) as $sumrow) 
 {
     $sum = $sumrow[0];
 }
 
 $pagesneeded = getpagesneeded($sum, $items_per_page);
-$page = pagesystem();
-
-$searchoptions = array("lmalayer");
-$valueneeded = array("lmalayercategoryid");
-$offset = ($page - 1) * $items_per_page;
-
-if (!empty($lmalayer)) {
-    $command = "SELECT * FROM `lmalayers` WHERE `lmalayer` LIKE '%".$lmalayer."%' AND `lmalayerid` >= $offset LIMIT $items_per_page;";
-} else if (!empty($lmalayercategoryid)) {
-    $command = "SELECT * FROM `lmalayers` WHERE `lmalayercategory` = $lmalayercategoryid AND `lmalayerid` >= $offset LIMIT $items_per_page;";
-} else {
-    $command = "SELECT * FROM `lmalayers` WHERE `lmalayerid` >= $offset LIMIT $items_per_page;";
-}
-
 $nextpagebutton = nextpagebutton($offset, $items_per_page, $pagesneeded);
 
 include("../../snippets/blocksnap.php");
@@ -44,7 +49,7 @@ echo "
 </tr>
 <tr>
     <td>
-    <form action=\"#\" method=\"post\">
+    <form>
         <select name=\"lmalayercategoryid\" id=\"lmalayercategoryid\">";
         $lmalayercategories = "SELECT * FROM `lmalayercategories`;";
         foreach ($pdo->query($lmalayercategories) as $rowcategories)
@@ -56,7 +61,7 @@ echo "
     </form>
     </td>
     <td>
-        <form action=\"#\" method=\"post\">
+        <form>
             <input type=hidden name=\"lmalayercategoryid\" value=\"$lmalayercategoryid\">
             <input type=text name=\"lmalayer\" value=\"".$lmalayer."\">
             <input class=\"button3\" type=submit>

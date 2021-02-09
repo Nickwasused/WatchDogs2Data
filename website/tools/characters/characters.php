@@ -5,26 +5,32 @@ $categoryid = getrequest($_REQUEST['categoryid']);
 $modelname = getrequest($_REQUEST['modelname']);
 $skip = "false";
 
-foreach ($pdo->query("SELECT MAX(characterid) FROM charactermodels;") as $sumrow) 
+$page = pagesystem();
+$offset = ($page - 1) * $items_per_page;
+
+$searchoptions = array("modelname");
+$valueneeded = array("categoryid");
+
+if (!empty($modelname)) {
+    $command = "SELECT * FROM `charactermodels`,`charactercategorys` WHERE `modelname` LIKE '%".$modelname."%' AND `charactermodels`.`categoryid` = $categoryid AND `charactercategorys`.`categoryid` = $categoryid AND `characterid` >= $offset LIMIT $items_per_page;";
+    #define the filteroption for the page system
+    $filteroption = "WHERE `modelname` LIKE '%".$modelname."%' AND `charactermodels`.`categoryid` = $categoryid AND `charactercategorys`.`categoryid` = $categoryid;";
+} else if (!empty($categoryid)) {
+    $command = "SELECT * FROM `charactermodels`,`charactercategorys` WHERE `charactermodels`.`categoryid` = $categoryid AND `charactercategorys`.`categoryid` = $categoryid AND `characterid` >= $offset LIMIT $items_per_page;";
+    $filteroption = "WHERE `charactermodels`.`categoryid` = $categoryid;";
+} else {
+    $filteroption = ";";
+    $skip = "true";
+}
+
+#merge the count option with the filter
+$normalfilter = "SELECT COUNT(characterid) FROM charactermodels " . $filteroption;
+foreach ($pdo->query($normalfilter) as $sumrow) 
 {
     $sum = $sumrow[0];
 }
 
 $pagesneeded = getpagesneeded($sum, $items_per_page);
-$page = pagesystem();
-
-$searchoptions = array("modelname");
-$valueneeded = array("categoryid");
-$offset = ($page - 1) * $items_per_page;
-
-if (!empty($modelname)) {
-    $command = "SELECT * FROM `charactermodels`,`charactercategorys` WHERE `modelname` LIKE '%".$modelname."%' AND `charactermodels`.`categoryid` = $categoryid AND `charactercategorys`.`categoryid` = $categoryid AND `characterid` >= $offset LIMIT $items_per_page;";
-} else if (!empty($categoryid)) {
-    $command = "SELECT * FROM `charactermodels`,`charactercategorys` WHERE `charactermodels`.`categoryid` = $categoryid AND `charactercategorys`.`categoryid` = $categoryid AND `characterid` >= $offset LIMIT $items_per_page;";
-} else {
-    $skip = "true";
-}
-
 $nextpagebutton = nextpagebutton($offset, $items_per_page, $pagesneeded);
 
 include("../../snippets/blocksnap.php");
@@ -44,7 +50,7 @@ echo "
 </tr>
 <tr>
     <td>
-    <form action=\"#\" method=\"post\">
+    <form>
         <select name=\"categoryid\" id=\"categoryid\">";
         $charactercategories = "SELECT * FROM `charactercategorys`;";
         foreach ($pdo->query($charactercategories) as $rowcategories)
@@ -56,7 +62,7 @@ echo "
     </form>
     </td>
     <td>
-        <form action=\"#\" method=\"post\">
+        <form>
             <input type=hidden name=\"categoryid\" value=\"$categoryid\">
             <input type=text name=\"modelname\" value=\"".$modelname."\">
             <input class=\"button3\" type=submit>

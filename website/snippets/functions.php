@@ -23,7 +23,7 @@ function buttonscycle($searchoptions, $returnfile, $page, $valueneeded, $nextpag
         #if the variable requested is not empty then create the according button for it
         if (!empty($_REQUEST[$value])) {
             #if the nextpage button is true then create it
-            if ($nextpagebutton == "true") {
+            if ($nextpagebutton === 1) {
                 if ($page==1) {
                     echo "<center><button class=\"button button2\"><a href=\"./$returnfile?".$value."=".$_REQUEST[$value]."".$neededstring."&page=".($page+1)."\">next page</a></button></center>";
                 } else {
@@ -32,9 +32,9 @@ function buttonscycle($searchoptions, $returnfile, $page, $valueneeded, $nextpag
                 $number++;
                 break;
             #if the next page button is false then create the previus page button only
-            } else {
+            } else if ($nextpagebutton === 0) {
                 if ($page==1) { } else {
-                    echo "<center><button class=\"button button1\"><a href=\"./$returnfile?".$value."=".$_REQUEST[$value]."".$neededstring."&page=".($page-1)."\">previous page</a></button><button class=\"button button2\"><a href=\"./$returnfile?".$value."=".$_REQUEST[$value]."".$neededstring."&page=".($page+1)."\">next page</a></button></center>";
+                    echo "<center><button class=\"button button1\"><a href=\"./$returnfile?".$value."=".$_REQUEST[$value]."".$neededstring."&page=".($page-1)."\">previous page</a></button>";
                 }
                 $number++;
                 break;
@@ -46,16 +46,16 @@ function buttonscycle($searchoptions, $returnfile, $page, $valueneeded, $nextpag
     if ($number===1) {}
     else {
         #if the nextpage button is true then create it
-        if ($nextpagebutton == "true") {
+        if ($nextpagebutton === 1) {
             if ($page===1) {
-                echo "<center><button class=\"button button2\"><a href=\"./$returnfile?page=".($page+1)."\">next page</a></button></center>";
+                echo "<center><button class=\"button button2\"><a href=\"./$returnfile?page=".($page+1)."".$neededstring."\">next page</a></button></center>";
             } else {
-                echo "<center><button class=\"button button1\"><a href=\"./$returnfile?page=".($page-1)."\">previous page</a></button>  <button class=\"button button2\"><a href=\"./$returnfile?page=".($page+1)."\">next page</a></button></center>";
+                echo "<center><button class=\"button button1\"><a href=\"./$returnfile?page=".($page-1)."".$neededstring."\">previous page</a></button>  <button class=\"button button2\"><a href=\"./$returnfile?page=".($page+1)."".$neededstring."\">next page</a></button></center>";
             }
         #if the next page button is false then create the previus page button only
-        } else {
+        } else if ($nextpagebutton === 0) {
             if ($page===1) {} else {
-                echo "<center><button class=\"button button1\"><a href=\"./$returnfile?page=".($page-1)."\">previous page</a></button>";
+                echo "<center><button class=\"button button1\"><a href=\"./$returnfile?page=".($page-1)."".$neededstring."\">previous page</a></button>";
             }
         }
     }
@@ -89,10 +89,10 @@ function getrequest(&$value, $default = null)
 
 function nextpagebutton($offset, $items_per_page, $pagesneeded){
     if (($offset + $items_per_page) > ($pagesneeded * $items_per_page)) {
-        $nextpagebutton = "false";
+        $nextpagebutton = 0;
         return $nextpagebutton;
     } else {
-        $nextpagebutton = "true";
+        $nextpagebutton = 1;
         return $nextpagebutton;
     }
 }
