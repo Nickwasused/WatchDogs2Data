@@ -2,7 +2,7 @@
 Watch Dogs 2 Data
 
 ## What the project does
-This Project is made to help Watch Dogs 2 mod developers find the correct data for their project e.g. the correct player model or vehicle.
+This Project is made to help Watch Dogs 2 mod developers find the correct data for their project e.g. the correct character model or vehicle.
 
 ## Why the project is useful
 The Project is useful because the is no other site (that I know, please correct me if I am wrong!) that offers a list of all character models, vehicles, weather types, or lma layers (all with previews).
