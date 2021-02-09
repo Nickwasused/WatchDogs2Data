@@ -16,7 +16,7 @@ If you need help please open an issue.
 ## Who maintains and contributes to the project
 At the moment the project is maintained by me (Nickwasused).
 
-### Data
+# Data
 
 ## Preview
 [Preview](github/preview.md)
