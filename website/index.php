@@ -5,7 +5,7 @@ echo "
 	<div class=\"imagefilter\">
 		<a id=\"home\"></a>
 		<h1>Watch Dogs 2</h1>
-		<h2>Game informations</h2>
+		<h2>Game Data</h2>
 		<h3>By Nickwasused</h3>
 	</div>
 </div>
