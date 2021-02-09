@@ -1,22 +1,22 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 @charset "utf-8";
 
-@font-face {
-    font-family  : 'HACKED';
-    src: url('/fonts/HACKED.woff2') format('woff2'),
-		 url('/fonts/HACKED.woff') format('woff'),
-		 url('/fonts/HACKED.ttf') format('truetype'),
-         url('/fonts/HACKED.svg#robotoregular') format('svg');
-    font-weight   : normal;
-    font-style    : normal;
-	font-display  : swap;
-}
-
-
 html {
-	font-family : 'HACKED' !important;
-	font-size   : 2vh;
-	overflow-x  : hidden;
-	scroll-snap-type: y mandatory;
+    font-family          : 'arial', sans-serif;
+    font-weight          : normal;
+    font-style           : normal;
+	font-display         : swap;
+	unicode-range        : U+000-5FF;
+	font-size            : 2vh;
+	overflow-x           : hidden;
+	-ms-scroll-snap-type : y mandatory;
+	    scroll-snap-type : y mandatory;
 }
 
 :root {
@@ -78,23 +78,30 @@ li a {
 	font-size       : 1rem;
 }
 
+.contentstart,
+.content {
+	display                : -webkit-box;
+	display                : -ms-flexbox;
+	display                : flex;
+    -webkit-box-orient     : vertical;
+    -webkit-box-direction  : normal;
+        -ms-flex-direction : column;
+            flex-direction : column;
+	height                 : auto;
+	background             : var(--imagefilter);
+}
+
 .contentstart {
-	display        : flex;
-    flex-direction : column;
-	height         : 95%;
-	width          : 100%;
-	height         : auto;
-	background     : var(--imagefilter);
+	height : 95%;
+	width  : 100%;
 }
 
 .content {
-	scroll-snap-align : start;
-	display           : flex;
-    flex-direction    : column;
-	min-width         : 100%;
-	min-height        : 100vh;
-	height            : auto;
-	background        : var(--imagefilter);
+	scroll-snap-align          : start;
+	scroll-snap-type           : y mandatory;
+	-webkit-overflow-scrolling : touch;
+	min-width                  : 100%;
+	min-height                 : 100vh;
 }
 
 .content:last-of-type {
@@ -197,21 +204,36 @@ td video {
 }
 
 a img {
-	transition : all .2s ease-in-out;
+	-webkit-transition : all .2s ease-in-out;
+	-o-transition      : all .2s ease-in-out;
+	transition         : all .2s ease-in-out;
 }
 
 a img:hover {
-	transform : scale(1.2);
+	-webkit-transform : scale(1.2);
+	    -ms-transform : scale(1.2);
+	        transform : scale(1.2);
 }
 
 p a {
 	color : white;
 }
 
-.button1 {background-color: #EC6762;} /* Red */
-.button2 {background-color: #4CAF50;} /* Green */
-.button3 {background-color: #008CBA;} /* Blue */
-.resetbutton {margin-top: 5%;}
+.button1 {
+	background-color : #EC6762; /* Red */
+}
+
+.button2 {
+	background-color : #4CAF50; /* Green */
+} 
+
+.button3 {
+	background-color : #008CBA; /* Blue */
+} 
+
+.resetbutton {
+	margin-top : 1%;
+}
 
 input[type=submit] {
 	border          : none;
@@ -233,14 +255,15 @@ input[type=submit] {
   }
 
 .category {
-	box-shadow       : 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
-	padding          : 16px;
-	text-align       : center;
-	background-color : darkgray;
-	width            : 50%;
-	height           : 50%;
-	margin           : 1%;
-	border-radius    : 25px;
+	-webkit-box-shadow       : 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	        box-shadow       : 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+	padding                  : 16px;
+	text-align               : center;
+	background-color         : darkgray;
+	width                    : 50%;
+	height                   : 50%;
+	margin                   : 1%;
+	border-radius            : 25px;
 }
 
 .category a {

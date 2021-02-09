@@ -26,6 +26,8 @@ echo "<html>
 	<!-- async css loading -->
 	<link type='text/css' rel='stylesheet' href='/css/main.css' media=\"none\" onload=\"if(media!='all')media='all'\">
 	<!-- version : ".$version." -->
+	<!-- this project is going to be using cloudflare (link gets added later) -->
+	<!-- <link href='https://cdn.keycdn.com' rel='preconnect' crossorigin> -->
 </head>
 <a id=\"home\"></a>
 <header>
