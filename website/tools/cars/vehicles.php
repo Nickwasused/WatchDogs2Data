@@ -40,7 +40,7 @@ $pagesneeded = getpagesneeded($sum, $items_per_page);
 $nextpagebutton = nextpagebutton($offset, $items_per_page, $pagesneeded);
 include("../../snippets/blocksnap.php");
 echo "
-<div class=\"contentstart lozad\" data-background-image=\"/images/backgrounds/avif/background3.avif,/images/backgrounds/webp/background3.webp\">
+<div class=\"contentstart lozad\" data-background-image=\"/images/avif/backgrounds/background3.avif,/images/webp/backgrounds/background3.webp\">
 <div class=\"imagefilter\">";
 
 buttonscycle($searchoptions, "vehicles.php", $page, $valueneeded, $nextpagebutton);

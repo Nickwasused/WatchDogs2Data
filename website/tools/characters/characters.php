@@ -55,7 +55,7 @@ $nextpagebutton = nextpagebutton($offset, $items_per_page, $pagesneeded);
 
 include("../../snippets/blocksnap.php");
 echo "
-<div class=\"contentstart lozad\" data-background-image=\"/images/backgrounds/avif/background3.avif,/images/backgrounds/webp/background3.webp\">
+<div class=\"contentstart lozad\" data-background-image=\"/images/avif/backgrounds/background2.avif,/images/webp/backgrounds/background2.webp\">
 <div class=\"imagefilter\">";
 
 buttonscycle($searchoptions, "characters.php", $page, $valueneeded, $nextpagebutton);

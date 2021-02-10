@@ -45,7 +45,7 @@ $nextpagebutton = nextpagebutton($offset, $items_per_page, $pagesneeded);
 
 include("../../snippets/blocksnap.php");
 echo "
-<div class=\"contentstart lozad\" data-background-image=\"/images/backgrounds/avif/background3.avif,/images/backgrounds/webp/background3.webp\">
+<div class=\"contentstart lozad\" data-background-image=\"/images/avif/backgrounds/background5.avif,/images/webp/backgrounds/background5.webp\">
 <div class=\"imagefilter\">";
 
 buttonscycle($searchoptions, "weather.php", $page, $valueneeded, $nextpagebutton);
