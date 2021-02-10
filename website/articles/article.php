@@ -79,8 +79,9 @@ echo "
 <div class=\"contentstart lozad\" data-background-image=\"/images/avif/backgrounds/background1.avif,/images/webp/backgrounds/background1.webp\">
 <div class=\"imagefilter\">";
 
-buttonscycle($searchoptions, "article.php", $page, $valueneeded, $nextpagebutton);
-
+if ($article === 0) {
+    buttonscycle($searchoptions, "article.php", $page, $valueneeded, $nextpagebutton);
+}
 
 if ($article === 1) {
     while ($row = $sth->fetch()) {
