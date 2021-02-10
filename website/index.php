@@ -1,7 +1,7 @@
 <?php
 include("snippets/head.php");
 echo "
-<div class=\"contentstart lozad\" data-background-image=\"/images/backgrounds/avif/background1.avif,/images/backgrounds/webp/background1.webp\">
+<div class=\"contentstart lozad\" data-background-image=\"/images/avif/backgrounds/background1.avif,/images/webp/backgrounds/background1.webp\">
 	<div class=\"imagefilter\">
 		<a id=\"home\"></a>
 		<h1>Watch Dogs 2</h1>
@@ -10,7 +10,7 @@ echo "
 	</div>
 </div>
 
-<div class=\"content lozad\" data-background-image=\"/images/backgrounds/avif/background2.avif,/images/backgrounds/webp/background2.webp\">
+<div class=\"content lozad\" data-background-image=\"/images/avif/backgrounds/background2.avif,/images/webp/backgrounds/background2.webp\">
 	<div class=\"imagefilter\">
 		<a id=\"characters\"></a>
 		<h1>Character Models</h1>
@@ -19,7 +19,7 @@ echo "
 	</div>
 </div>
 
-<div class=\"content lozad\" data-background-image=\"/images/backgrounds/avif/background3.avif,/images/backgrounds/webp/background3.webp\">
+<div class=\"content lozad\" data-background-image=\"/images/avif/backgrounds/background3.avif,/images/webp/backgrounds/background3.webp\">
 	<div class=\"imagefilter\">
 		<a id=\"vehicles\"></a>
 		<h1>Vehicles</h1>
@@ -28,7 +28,7 @@ echo "
 	</div>
 </div>
 
-<div class=\"content lozad\" data-background-image=\"/images/backgrounds/avif/background4.avif,/images/backgrounds/webp/background4.webp\">
+<div class=\"content lozad\" data-background-image=\"/images/avif/backgrounds/background4.avif,/images/webp/backgrounds/background4.webp\">
 	<div class=\"imagefilter\">
 		<a id=\"lmalayers\"></a>
 		<h1>LMA Layers</h1>
@@ -37,7 +37,7 @@ echo "
 	</div>
 </div>
 
-<div class=\"content lozad\" data-background-image=\"/images/backgrounds/avif/background5.avif,/images/backgrounds/webp/background5.webp\">
+<div class=\"content lozad\" data-background-image=\"/images/avif/backgrounds/background5.avif,/images/webp/backgrounds/background5.webp\">
 	<div class=\"imagefilter\">
 		<a id=\"weathertypes\"></a>
 		<h1>Weather Types</h1>

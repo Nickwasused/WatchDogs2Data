@@ -2,7 +2,7 @@
 # block the snapping in the header of the page
 echo "
 <style>
-header {
+.header {
 	scroll-snap-align : none !important;
 }
 </style>
