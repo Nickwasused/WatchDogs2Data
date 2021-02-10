@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 10. Feb 2021 um 16:07
+-- Erstellungszeit: 10. Feb 2021 um 17:48
 -- Server-Version: 10.4.17-MariaDB
 -- PHP-Version: 8.0.1
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Datenbank: `watchdogs2_example`
+-- Datenbank: `watchdogs2example`
 --
 
 -- --------------------------------------------------------
@@ -49,15 +49,16 @@ CREATE TABLE `articles` (
   `articleid` int(11) NOT NULL,
   `articlecategoryid` int(11) NOT NULL,
   `articletitle` varchar(128) NOT NULL,
-  `articletext` varchar(4096) NOT NULL
+  `articletext` varchar(4096) NOT NULL,
+  `articleauthor` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Daten für Tabelle `articles`
 --
 
-INSERT INTO `articles` (`articleid`, `articlecategoryid`, `articletitle`, `articletext`) VALUES
-(1, 1, 'test', '<p>This is a test article!</p>');
+INSERT INTO `articles` (`articleid`, `articlecategoryid`, `articletitle`, `articletext`, `articleauthor`) VALUES
+(1, 1, 'test', '<p>This is a test article!</p>', '');
 
 -- --------------------------------------------------------
 

@@ -4,6 +4,7 @@ include("../snippets/functions.php");
 $articlecategoryid = getrequest($_REQUEST['articlecategoryid']);
 $articleid = getrequest($_REQUEST['articleid']);
 $articletitle = getrequest($_REQUEST['articletitle']);
+$articleauthor = getrequest($_REQUEST['articleauthor']);
 $skip = "false";
 
 if ($articlecategoryid == null) {
@@ -13,7 +14,7 @@ if ($articlecategoryid == null) {
 $page = pagesystem();
 $offset = ($page - 1) * $items_per_page;
 
-$searchoptions = array("articletitle");
+$searchoptions = array("articletitle", "articleauthor");
 $valueneeded = array("articlecategoryid");
 
 $setfiltermode = 0;
@@ -33,13 +34,19 @@ if (!empty($articleid)) {
     $sth = $pdo->prepare($command, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
     $sth->execute(array(':articletitle' => '%'.$articletitle.'%', ':articlecategoryid' => $articlecategoryid));
     $setfiltermode = 2;
+} else if (!empty($articleauthor)) {
+    $command = "SELECT * FROM `articles`,`articlecategories` WHERE `articleauthor` LIKE :articleauthor AND `articles`.`articlecategoryid` = :articlecategoryid AND `articlecategories`.`articlecategoryid` = :articlecategoryid LIMIT $items_per_page OFFSET $offset;";
+    $filteroption = "WHERE `articleauthor` LIKE :articleauthor AND `articles`.`articlecategoryid` = :articlecategoryid;";
+    $sth = $pdo->prepare($command, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+    $sth->execute(array(':articleauthor' => $articleauthor, ':articlecategoryid' => $articlecategoryid));
+    $setfiltermode = 4;
 } else if (!empty($articlecategoryid)) {
     $command = "SELECT * FROM `articles`,`articlecategories` WHERE `articles`.`articlecategoryid` = :articlecategoryid AND `articlecategories`.`articlecategoryid` = :articlecategoryid LIMIT $items_per_page OFFSET $offset;";
     $filteroption = "WHERE `articles`.`articlecategoryid` = :articlecategoryid;";
     $sth = $pdo->prepare($command, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
     $sth->execute(array(':articlecategoryid' => $articlecategoryid));
     $setfiltermode = 3;
-} else {
+}  else {
     $filteroption = ";";
     $command = "";
     $skip = "true";
@@ -54,6 +61,8 @@ if ($setfiltermode === 1) {
     $sth2->execute(array(':articletitle' => '%'.$articletitle.'%', ':articlecategoryid' => $articlecategoryid));
 } else if ($setfiltermode === 3) {
     $sth2->execute(array(':articlecategoryid' => $articlecategoryid));
+} else if ($setfiltermode === 4) {
+    $sth2->execute(array(':articleauthor' => $articleauthor, ':articlecategoryid' => $articlecategoryid));
 } else {
     $sth2->execute();
 }
@@ -80,10 +89,12 @@ if ($article === 1) {
     }
 } else if ($article === 0) {
     echo "
+    <h3 class=\"submitemail\">You can submit an article here: <a href=\"mailto:".$submit_article_email."?subject=watch dogs 2 article Suggestion&body=Author:%0Acategory:%0Atext:\">".$submit_article_email."</a></h3>
     <table>
     <thead>
     <tr>
         <td>Article category</td>
+        <td>Author</td>
         <td>Articlename</td>
     </tr>
     <tr>
@@ -102,6 +113,13 @@ if ($article === 1) {
         <td>
             <form>
                 <input type=hidden name=\"articlecategoryid\" value=\"$articlecategoryid\">
+                <input type=text name=\"articleauthor\" value=\"".$articleauthor."\">
+                <input class=\"button3\" type=submit>
+            </form>
+        </td>
+        <td>
+            <form>
+                <input type=hidden name=\"articlecategoryid\" value=\"$articlecategoryid\">
                 <input type=text name=\"articletitle\" value=\"".$articletitle."\">
                 <input class=\"button3\" type=submit>
             </form>
@@ -116,6 +134,7 @@ if ($article === 1) {
             {
                 echo "<tr><td>".$rowcategoryname["articlecategoryname"]."</td>";
             }
+            echo "<td>".$row["articleauthor"]."</td>";
             echo "<td><a href=\"./article.php?articleid=".$row["articleid"]."\">".$row["articletitle"]."</a></td><td>";
         }
     }
