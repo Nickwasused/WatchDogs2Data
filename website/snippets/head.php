@@ -48,6 +48,9 @@ echo "<html lang=\"en\">
 		<li>
 			<a href=\"/tools/weather/weather.php\">Weather Types</a>
 		</li>
+		<li>
+			<a href=\"/articles/article.php\">| Articles</a>
+		</li>
 	</ul> 
 </div>
 ";

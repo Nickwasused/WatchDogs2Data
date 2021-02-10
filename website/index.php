@@ -45,6 +45,16 @@ echo "
 		<center><a href=\"./tools/weather/weather.php\"><img class=\"icon\" src=\"/images/icons/weather.svg\"></img></a></center>
 	</div>
 </div>
+
+<div class=\"content lozad\" data-background-image=\"/images/avif/backgrounds/background2.avif,/images/webp/backgrounds/background2.webp\">
+	<div class=\"imagefilter\">
+		<a id=\"articles\"></a>
+		<h1>Articles</h1>
+		<h2>Some tips and tricks</h2>
+		<center><a href=\"./articles/article.php\"><img class=\"icon\" src=\"/images/icons/articles.svg\"></img></a></center>
+	</div>
+</div>
+
 ";
 include("snippets/footer.php");
 echo "</body>

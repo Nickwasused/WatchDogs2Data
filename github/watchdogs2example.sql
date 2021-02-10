@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 09. Feb 2021 um 10:35
+-- Erstellungszeit: 10. Feb 2021 um 16:07
 -- Server-Version: 10.4.17-MariaDB
 -- PHP-Version: 8.0.1
 
@@ -18,8 +18,46 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Datenbank: `watchdogs2example`
+-- Datenbank: `watchdogs2_example`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `articlecategories`
+--
+
+CREATE TABLE `articlecategories` (
+  `articlecategoryid` int(11) NOT NULL,
+  `articlecategoryname` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Daten für Tabelle `articlecategories`
+--
+
+INSERT INTO `articlecategories` (`articlecategoryid`, `articlecategoryname`) VALUES
+(1, 'example category');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `articles`
+--
+
+CREATE TABLE `articles` (
+  `articleid` int(11) NOT NULL,
+  `articlecategoryid` int(11) NOT NULL,
+  `articletitle` varchar(128) NOT NULL,
+  `articletext` varchar(4096) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Daten für Tabelle `articles`
+--
+
+INSERT INTO `articles` (`articleid`, `articlecategoryid`, `articletitle`, `articletext`) VALUES
+(1, 1, 'test', '<p>This is a test article!</p>');
 
 -- --------------------------------------------------------
 
@@ -85,8 +123,7 @@ INSERT INTO `charactercategorys` (`categoryid`, `categoryname`) VALUES
 (46, 'NeiWealthyOakland'),
 (47, 'OCCDriver'),
 (48, 'Marketing'),
-(49, 'Debug'),
-(50, 'categoryname');
+(49, 'Debug');
 
 -- --------------------------------------------------------
 
@@ -129,8 +166,7 @@ INSERT INTO `lmalayercategories` (`lmalayercategoryid`, `lmacategoryname`, `lmac
 (9, 'World Stories - Solo', 'Story'),
 (10, 'World Stories - Light', 'L'),
 (11, 'PL', 'PL'),
-(12, 'Debug', 'Debug'),
-(13, 'lmacategoryname', 'lmacategoryrealname');
+(12, 'Debug', 'Debug');
 
 -- --------------------------------------------------------
 
@@ -175,6 +211,18 @@ CREATE TABLE `weather` (
 --
 
 --
+-- Indizes für die Tabelle `articlecategories`
+--
+ALTER TABLE `articlecategories`
+  ADD PRIMARY KEY (`articlecategoryid`);
+
+--
+-- Indizes für die Tabelle `articles`
+--
+ALTER TABLE `articles`
+  ADD PRIMARY KEY (`articleid`);
+
+--
 -- Indizes für die Tabelle `charactercategorys`
 --
 ALTER TABLE `charactercategorys`
@@ -216,40 +264,52 @@ ALTER TABLE `weather`
 --
 
 --
+-- AUTO_INCREMENT für Tabelle `articlecategories`
+--
+ALTER TABLE `articlecategories`
+  MODIFY `articlecategoryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT für Tabelle `articles`
+--
+ALTER TABLE `articles`
+  MODIFY `articleid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT für Tabelle `charactercategorys`
 --
 ALTER TABLE `charactercategorys`
-  MODIFY `categoryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `categoryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT für Tabelle `charactermodels`
 --
 ALTER TABLE `charactermodels`
-  MODIFY `characterid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7511;
+  MODIFY `characterid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT für Tabelle `lmalayercategories`
 --
 ALTER TABLE `lmalayercategories`
-  MODIFY `lmalayercategoryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `lmalayercategoryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT für Tabelle `lmalayers`
 --
 ALTER TABLE `lmalayers`
-  MODIFY `lmalayerid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=625;
+  MODIFY `lmalayerid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT für Tabelle `vehicles`
 --
 ALTER TABLE `vehicles`
-  MODIFY `vehicleid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=272;
+  MODIFY `vehicleid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT für Tabelle `weather`
 --
 ALTER TABLE `weather`
-  MODIFY `weatherid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `weatherid` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
