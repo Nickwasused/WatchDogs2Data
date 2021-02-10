@@ -9,18 +9,30 @@ $offset = ($page - 1) * $items_per_page;
 $searchoptions = array("modelname");
 $valueneeded = array();
 
+$setfiltermode = 0;
+
 if (!empty($modelname)) {
-    $command = "SELECT * FROM `vehicles` WHERE `vehiclename` LIKE '%".$modelname."%' LIMIT $items_per_page OFFSET $offset;";
-    $filteroption = "WHERE `vehiclename` LIKE '%".$modelname."%';";
+    $command = "SELECT * FROM `vehicles` WHERE `vehiclename` LIKE :modelname LIMIT $items_per_page OFFSET $offset;";
+    $filteroption = " WHERE `vehiclename` LIKE :modelname;";
+    $sth = $pdo->prepare($command, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+    $sth->execute([':modelname' => '%'.$modelname.'%']);
+    $setfiltermode = 1;
 } else {
     $command = "SELECT * FROM `vehicles` LIMIT $items_per_page OFFSET $offset;";
     $filteroption = ";";
+    $sth = $pdo->prepare($command, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+    $sth->execute();
 }
 
 #merge the count option with the filter
-$normalfilter = "SELECT COUNT(vehicleid) FROM vehicles " . $filteroption;
-foreach ($pdo->query($normalfilter) as $sumrow) 
-{
+$normalfilter = "SELECT COUNT(vehicleid) FROM vehicles" . $filteroption;
+$sth2 = $pdo->prepare($normalfilter, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+if ($setfiltermode === 1) {
+    $sth2->execute([':modelname' => '%'.$modelname.'%']);
+} else {
+    $sth2->execute();
+}
+while ($sumrow = $sth2->fetch()) {
     $sum = $sumrow[0];
 }
 
@@ -51,8 +63,7 @@ echo "
 </thead>
 <tbody>";
 
-foreach ($pdo->query($command) as $row)
-{
+while ($row = $sth->fetch()) {
     echo "<tr><td><p>".$row["vehiclename"]."</p></td><td>";
     if ($row['image'] === "1") {
         echo "

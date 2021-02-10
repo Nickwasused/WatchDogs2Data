@@ -6,22 +6,36 @@ $weathername = getrequest($_REQUEST['weathername']);
 $page = pagesystem();
 $offset = ($page - 1) * $items_per_page;
 
+$setfiltermode = 0;
+
 if (!empty($weathername)) {
-    $command = "SELECT * FROM `weather` WHERE `weathername` LIKE '%".$weathername."%' LIMIT $items_per_page OFFSET $offset;";
+    $command = "SELECT * FROM `weather` WHERE `weathername` LIKE :weathername LIMIT $items_per_page OFFSET $offset;";
     #define the filteroption for the page system
-    $filteroption = "WHERE `weathername` LIKE '%".$weathername."%';";
+    $filteroption = "WHERE `weathername` LIKE :weathername;";
+    $sth = $pdo->prepare($command, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+    $sth->execute(array(':weathername' => '%'.$weathername.'%'));
+    $setfiltermode = 1;
 } else {
     $command = "SELECT * FROM `weather` LIMIT $items_per_page OFFSET $offset;";
+    $sth = $pdo->prepare($command, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+    $sth->execute();
     #define the filteroption for the page system
     $filteroption = ";";
 }
 
 #merge the count option with the filter
 $normalfilter = "SELECT COUNT(weatherid) FROM weather " . $filteroption;
-foreach ($pdo->query($normalfilter) as $sumrow) 
-{
+$sth2 = $pdo->prepare($normalfilter, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+if ($setfiltermode === 1) {
+    $sth2->execute(array(':weathername' => '%'.$weathername.'%'));
+} else {
+    $sth2->execute();
+}
+
+while ($sumrow = $sth2->fetch()) {
     $sum = $sumrow[0];
 }
+
 
 $searchoptions = array("weathername");
 $valueneeded = array();
@@ -55,8 +69,7 @@ echo "
 </thead>
 <tbody>";
 	
-foreach ($pdo->query($command) as $row)
-{
+while ($row = $sth->fetch()) {
     echo "<tr><td>".$row["weathername"]."</td>";
     if ($row['weathervideo'] === "1") {
        echo "<td>

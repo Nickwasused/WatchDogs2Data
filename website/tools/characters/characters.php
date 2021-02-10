@@ -11,25 +11,42 @@ $offset = ($page - 1) * $items_per_page;
 $searchoptions = array("modelname");
 $valueneeded = array("categoryid");
 
+$setfiltermode = 0;
+
 if (!empty($modelname)) {
-    $command = "SELECT * FROM `charactermodels`,`charactercategorys` WHERE `modelname` LIKE '%".$modelname."%' AND `charactermodels`.`categoryid` = $categoryid AND `charactercategorys`.`categoryid` = $categoryid LIMIT $items_per_page OFFSET $offset;";
+    $command = "SELECT * FROM `charactermodels`,`charactercategorys` WHERE `modelname` LIKE :modelname AND `charactermodels`.`categoryid` = :categoryid AND `charactercategorys`.`categoryid` = :categoryid LIMIT $items_per_page OFFSET $offset;";
     #define the filteroption for the page system
-    $filteroption = "WHERE `modelname` LIKE '%".$modelname."%' AND `charactermodels`.`categoryid` = $categoryid AND `charactercategorys`.`categoryid` = $categoryid;";
+    $filteroption = "WHERE `modelname` LIKE :modelname AND `charactermodels`.`categoryid` = :categoryid;";
+    $sth = $pdo->prepare($command, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+    $sth->execute(array(':modelname' => '%'.$modelname.'%', ':categoryid' => $categoryid));
+    $setfiltermode = 1;
 } else if (!empty($categoryid)) {
-    $command = "SELECT * FROM `charactermodels`,`charactercategorys` WHERE `charactermodels`.`categoryid` = $categoryid AND `charactercategorys`.`categoryid` = $categoryid LIMIT $items_per_page OFFSET $offset;";
-    $filteroption = "WHERE `charactermodels`.`categoryid` = $categoryid;";
+    $command = "SELECT * FROM `charactermodels`,`charactercategorys` WHERE `charactermodels`.`categoryid` = :categoryid AND `charactercategorys`.`categoryid` = :categoryid LIMIT $items_per_page OFFSET $offset;";
+    $filteroption = "WHERE `charactermodels`.`categoryid` = :categoryid;";
+    $sth = $pdo->prepare($command, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+    $sth->execute(array(':categoryid' => $categoryid));
+    $setfiltermode = 2;
 } else {
     $filteroption = ";";
     $command = "";
     $skip = "true";
 }
 
+
 #merge the count option with the filter
 $normalfilter = "SELECT COUNT(characterid) FROM charactermodels " . $filteroption;
-foreach ($pdo->query($normalfilter) as $sumrow) 
-{
+$sth2 = $pdo->prepare($normalfilter, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+if ($setfiltermode === 1) {
+    $sth2->execute(array(':modelname' => '%'.$modelname.'%', ':categoryid' => $categoryid));
+} else if ($setfiltermode === 2) {
+    $sth2->execute(array(':categoryid' => $categoryid));
+}
+
+while ($sumrow = $sth2->fetch()) {
     $sum = $sumrow[0];
 }
+
+
 
 $pagesneeded = getpagesneeded($sum, $items_per_page);
 $nextpagebutton = nextpagebutton($offset, $items_per_page, $pagesneeded);
@@ -74,8 +91,7 @@ echo "
 </thead>
 <tbody>";
 if ($skip == "false") {
-    foreach ($pdo->query($command) as $row)
-    {
+    while ($row = $sth->fetch()) {
         $categoryname = "SELECT * FROM `charactercategorys` WHERE `categoryid` = ".$row["categoryid"].";";
         foreach ($pdo->query($categoryname) as $rowcategoryname)
         {

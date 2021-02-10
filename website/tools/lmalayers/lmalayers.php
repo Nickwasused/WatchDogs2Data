@@ -10,21 +10,39 @@ $offset = ($page - 1) * $items_per_page;
 $searchoptions = array("lmalayer");
 $valueneeded = array("lmalayercategoryid");
 
+$setfiltermode = 0;
+
 if (!empty($lmalayer)) {
-    $command = "SELECT * FROM `lmalayers` WHERE `lmalayer` LIKE '%".$lmalayer."%' LIMIT $items_per_page OFFSET $offset;";
-    $filteroption = "WHERE `lmalayer` LIKE '%".$lmalayer."%';";
+    $command = "SELECT * FROM `lmalayers` WHERE `lmalayer` LIKE :lmalayer LIMIT $items_per_page OFFSET $offset;";
+    $filteroption = "WHERE `lmalayer` LIKE :lmalayer;";
+    $sth = $pdo->prepare($command, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+    $sth->execute(array(':lmalayer' => '%'.$lmalayer.'%'));
+    $setfiltermode = 1;
 } else if (!empty($lmalayercategoryid)) {
-    $command = "SELECT * FROM `lmalayers` WHERE `lmalayercategory` = $lmalayercategoryid LIMIT $items_per_page OFFSET $offset;";
-    $filteroption = "WHERE `lmalayercategory` = $lmalayercategoryid;";
+    $command = "SELECT * FROM `lmalayers` WHERE `lmalayercategory` = :lmalayercategoryid LIMIT $items_per_page OFFSET $offset;";
+    $sth = $pdo->prepare($command, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+    $sth->execute(array(':lmalayercategoryid' => $lmalayercategoryid));
+    $filteroption = "WHERE `lmalayercategory` = :lmalayercategoryid;";
+    $setfiltermode = 2;
 } else {
     $command = "SELECT * FROM `lmalayers` LIMIT $items_per_page OFFSET $offset;";
     $filteroption = ";";
+    $sth = $pdo->prepare($command, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+    $sth->execute();
 }
 
 #merge the count option with the filter
 $normalfilter = "SELECT COUNT(lmalayerid) FROM lmalayers " . $filteroption;
-foreach ($pdo->query($normalfilter) as $sumrow) 
-{
+$sth2 = $pdo->prepare($normalfilter, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+if ($setfiltermode === 1) {
+    $sth2->execute(array(':lmalayer' => '%'.$lmalayer.'%'));
+} else if ($setfiltermode === 2) {
+    $sth2->execute(array(':lmalayercategoryid' => $lmalayercategoryid));
+} else {
+    $sth2->execute();
+}
+
+while ($sumrow = $sth2->fetch()) {
     $sum = $sumrow[0];
 }
 
@@ -73,8 +91,7 @@ echo "
 </thead>
 <tbody>";
 	
-foreach ($pdo->query($command) as $row)
-{
+while ($row = $sth->fetch()) {
     $categoryname = "SELECT * FROM `lmalayercategories` WHERE `lmalayercategoryid` = ".$row["lmalayercategory"].";";
     foreach ($pdo->query($categoryname) as $rowcategoryname)
     {
