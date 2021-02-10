@@ -3,7 +3,7 @@
 #connect to database
 require("login.php");
 require("constants.php");
-echo "<html>
+echo "<html lang=\"en\">
 <head>
 	<a id=\"top\"></a>
 	<title>Watch Dogs 2 Data | Nickwasused</title>
@@ -29,26 +29,26 @@ echo "<html>
 	<!-- this project is going to be using cloudflare (link gets added later) -->
 	<!-- <link href='https://cdn.keycdn.com' rel='preconnect' crossorigin> -->
 </head>
+<body>
 <a id=\"home\"></a>
-<header>
+<div class=\"header\">
 	<ul>
 		<li>
 			<a href=\"/#home\">Home</a>
 		</li>
 		<li>
-			<a href=\"/#characters\">Characters</a>
+			<a href=\"/tools/characters/characters.php\">Characters</a>
 		</li>
 		<li>
-			<a href=\"/#vehicles\">Vehicles</a>
+			<a href=\"/tools/cars/vehicles.php\">Vehicles</a>
 		</li>
 		<li>
-			<a href=\"/#lmalayers\">LMALayers</a>
+			<a href=\"/tools/lmalayers/lmalayers.php\">LMALayers</a>
 		</li>
 		<li>
-			<a href=\"/#weathertypes\">Weather Types</a>
+			<a href=\"/tools/weather/weather.php\">Weather Types</a>
 		</li>
 	</ul> 
-</header>
-<body>
+</div>
 ";
 ?>

@@ -23,7 +23,7 @@ html {
     --imagefilter : rgba(41, 38, 56, 0.95);
 }
 
-header {
+.header {
 	scroll-snap-align : start;
 	min-height        : 5vh;
 	max-height        : 5vh;

@@ -40,6 +40,8 @@ if ($setfiltermode === 1) {
     $sth2->execute(array(':modelname' => '%'.$modelname.'%', ':categoryid' => $categoryid));
 } else if ($setfiltermode === 2) {
     $sth2->execute(array(':categoryid' => $categoryid));
+} else {
+    $sth2->execute();
 }
 
 while ($sumrow = $sth2->fetch()) {
