@@ -1,5 +1,4 @@
 <?php
-
 function buttonscycle($searchoptions, $returnfile, $page, $valueneeded, $nextpagebutton) {
     #create the default reset button
     echo "<center><button class=\"button button1 resetbutton\"><a href=\"./".$returnfile."\">reset</a></button></center>";

@@ -9,4 +9,5 @@ echo "
 	<!-- image Lazy Loading -->
 	<script defer src=\"/scripts/lozad.js\"></script>
 </footer>\n";
+ob_end_flush(); 
 ?>
