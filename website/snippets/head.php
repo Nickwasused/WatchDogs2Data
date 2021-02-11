@@ -27,7 +27,7 @@ require("login.php");
 require("constants.php");
 
 #change to ob_start("sanitize_output"); in production
-ob_start();
+ob_start($sanitizerstate);
 echo "<html lang=\"en\">
 <head>
 	<a id=\"top\"></a>
