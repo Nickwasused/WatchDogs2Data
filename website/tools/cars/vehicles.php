@@ -64,12 +64,12 @@ echo "
 <tbody>";
 
 while ($row = $sth->fetch()) {
-    echo "<tr><td><p>".$row["vehiclename"]."</p></td><td>";
+    echo "<tr><td><p>".strtolower($row["vehiclename"])."</p></td><td>";
     if ($row['image'] === "1") {
         echo "
         <picture class=\"lozad\">
-            <source srcset=\"/images/avif/vehicles/".$row["vehiclename"].".avif\">
-            <source srcset=\"/images/webp/vehicles/".$row["vehiclename"].".webp\">
+            <source srcset=\"/images/avif/vehicles/".strtolower($row["vehiclename"]).".avif\">
+            <source srcset=\"/images/webp/vehicles/".strtolower($row["vehiclename"]).".webp\">
             <img src=\"/images/webp/vehicles/".$row["vehiclename"].".webp\" alt=\"\"></noscript>
         </picture>";
     } else {

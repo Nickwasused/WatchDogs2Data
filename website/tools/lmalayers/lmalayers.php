@@ -110,9 +110,9 @@ while ($row = $sth->fetch()) {
     if ($row['image'] === "1") {
     echo "<a href=\"/images/webp/lmalayers/".$rowcategoryname["lmacategoryname"]."/".$row["lmalayer"].".webp\" target=\"_blank\">
             <picture class=\"lozad\">
-                    <source srcset=\"/images/avif/lmalayers/".$rowcategoryname["lmacategoryname"]."/".$row["lmalayer"].".avif\">
-                    <source srcset=\"/images/webp/lmalayers/".$rowcategoryname["lmacategoryname"]."/".$row["lmalayer"].".webp\">
-                    <img src=\"/images/webp/lmalayers/".$rowcategoryname["lmacategoryname"]."/".$row["lmalayer"].".webp\" alt=\"\"></noscript>
+                    <source srcset=\"/images/avif/lmalayers/".strtolower($rowcategoryname["lmacategoryname"])."/".strtolower($row["lmalayer"]).".avif\">
+                    <source srcset=\"/images/webp/lmalayers/".strtolower($rowcategoryname["lmacategoryname"])."/".strtolower($row["lmalayer"]).".webp\">
+                    <img src=\"/images/webp/lmalayers/".strtolower($rowcategoryname["lmacategoryname"])."/".strtolower($row["lmalayer"]).".webp\" alt=\"\"></noscript>
                 </picture></a>";
     } else {
         echo "<img class=\"lozad placeholdericon\" data-src=\"/images/icons/placeholder.svg\"></img>";
