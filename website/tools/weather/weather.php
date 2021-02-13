@@ -74,8 +74,8 @@ while ($row = $sth->fetch()) {
     if ($row['weathervideo'] === "1") {
        echo "<td>
         <video class=\"lozad\" controls muted>
-            <source data-src=\"/videos/webm/weather/".strtolower($row["weathername"]).".webm\" type=\"video/webm\">
-            <source data-src=\"/videos/mp4/weather/".strtolower($row["weathername"]).".avi\" type=\"video/mp4\">
+            <source data-src=\"/videos/webm/weather/".$row["weathername"].".webm\" type=\"video/webm\">
+            <source data-src=\"/videos/mp4/weather/".$row["weathername"].".avi\" type=\"video/mp4\">
         </video></td>";
 
     } else {
