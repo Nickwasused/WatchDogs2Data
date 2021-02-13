@@ -52,7 +52,7 @@ echo "<html lang=\"en\">
 	<link type='text/css' rel='stylesheet' href='/css/main.css' media=\"none\" onload=\"if(media!='all')media='all'\">
 	<!-- version : ".$version." -->
 	<!-- this project is going to be using cloudflare (link gets added later) -->
-	<!-- <link href='https://cdn.keycdn.com' rel='preconnect' crossorigin> -->
+	<link href='https://ajax.cloudflare.com' rel='preconnect' crossorigin>
 </head>
 <body>
 <a id=\"home\"></a>
