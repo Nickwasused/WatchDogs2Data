@@ -48,11 +48,12 @@ echo "<html lang=\"en\">
 	<meta name=\"msapplication-TileImage\" content=\"/images/favicon/mstile-144x144.png\">
 	<meta name=\"msapplication-config\" content=\"/images/favicon/browserconfig.xml\">
 	<meta name=\"theme-color\" content=\"#ffffff\">
+	<!-- this project is going to be using cloudflare -->
+	<link href='https://ajax.cloudflare.com' rel='preconnect' crossorigin>
+	<link href='https://cdnjs.cloudflare.com' rel='preconnect' crossorigin>
 	<!-- async css loading -->
 	<link type='text/css' rel='stylesheet' href='/css/main.css' media=\"none\" onload=\"if(media!='all')media='all'\">
 	<!-- version : ".$version." -->
-	<!-- this project is going to be using cloudflare (link gets added later) -->
-	<link href='https://ajax.cloudflare.com' rel='preconnect' crossorigin>
 </head>
 <body>
 <a id=\"home\"></a>
