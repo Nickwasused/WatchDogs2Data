@@ -2,15 +2,16 @@
 function buttonscycle($searchoptions, $returnfile, $page, $valueneeded, $nextpagebutton) {
     $number = 0;
 
-    #define neededstring
-    $neededstring = "";
+    #define neededstring 1/2
+    $neededstring1 = "";
+    $neededstring2 = "";
 
     #query the required values
     foreach ($valueneeded as $neededvalue) {
         if (!empty($neededvalue)) {
             #if the needed value is not empty then append it to the string
-            $neededstring1 = $neededstring . "&".$neededvalue."=".getrequest($_REQUEST[$neededvalue])."";
-            $neededstring2 = $neededstring . "?".$neededvalue."=".getrequest($_REQUEST[$neededvalue])."";
+            $neededstring1 = $neededstring1 . "&".$neededvalue."=".getrequest($_REQUEST[$neededvalue])."";
+            $neededstring2 = $neededstring2 . "?".$neededvalue."=".getrequest($_REQUEST[$neededvalue])."";
         } else {
             #do nothing
         }
