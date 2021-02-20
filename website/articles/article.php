@@ -1,10 +1,12 @@
 <?php
 include("../snippets/head.php");
 include("../snippets/functions.php");
-$articlecategoryid = getrequest($_REQUEST['articlecategoryid']);
-$articleid = getrequest($_REQUEST['articleid']);
-$articletitle = getrequest($_REQUEST['articletitle']);
-$articleauthor = getrequest($_REQUEST['articleauthor']);
+$articlecategoryid = filter_var(getrequest($_REQUEST['articlecategoryid']), FILTER_SANITIZE_NUMBER_FLOAT);
+$articleid = filter_var(getrequest($_REQUEST['articleid']), FILTER_SANITIZE_NUMBER_FLOAT);
+$articletitle = filter_var(getrequest($_REQUEST['articletitle']), FILTER_SANITIZE_STRING);
+$articleauthor = filter_var(getrequest($_REQUEST['articleauthor']), FILTER_SANITIZE_STRING);
+
+
 $skip = "false";
 
 #if the requested articlecategory is null then put it to 1 as default
