@@ -1,8 +1,7 @@
 <?php
 include("../../snippets/head.php");
 include("../../snippets/functions.php");
-$weathername = getrequest($_REQUEST['weathername']);
-
+$weathername = filter_var(getrequest($_REQUEST['weathername']), FILTER_SANITIZE_STRING);
 $page = pagesystem();
 $offset = ($page - 1) * $items_per_page;
 

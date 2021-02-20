@@ -1,8 +1,8 @@
 <?php
 include("../../snippets/head.php");
 include("../../snippets/functions.php");
-$lmalayer = getrequest($_REQUEST['lmalayer']);
-$lmalayercategoryid = getrequest($_REQUEST['lmalayercategoryid']);
+$lmalayer = filter_var(getrequest($_REQUEST['lmalayer']), FILTER_SANITIZE_STRING);
+$lmalayercategoryid = filter_var(getrequest($_REQUEST['lmalayercategoryid']), FILTER_SANITIZE_NUMBER_FLOAT);
 
 $page = pagesystem();
 $offset = ($page - 1) * $items_per_page;

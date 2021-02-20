@@ -1,8 +1,7 @@
 <?php
 include("../../snippets/head.php");
 include("../../snippets/functions.php");
-$modelname = getrequest($_REQUEST['modelname']);
-
+$modelname = filter_var(getrequest($_REQUEST['modelname']), FILTER_SANITIZE_STRING);
 $page = pagesystem();
 $offset = ($page - 1) * $items_per_page;
 

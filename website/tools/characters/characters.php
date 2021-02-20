@@ -1,8 +1,8 @@
 <?php
 include("../../snippets/head.php");
 include("../../snippets/functions.php");
-$categoryid = getrequest($_REQUEST['categoryid']);
-$modelname = getrequest($_REQUEST['modelname']);
+$categoryid = filter_var(getrequest($_REQUEST['categoryid']), FILTER_SANITIZE_NUMBER_FLOAT);
+$modelname = filter_var(getrequest($_REQUEST['modelname']), FILTER_SANITIZE_STRING);
 $skip = "false";
 
 $page = pagesystem();
