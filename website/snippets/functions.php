@@ -86,7 +86,7 @@ function pagesystem(){
 function getrequest(&$value, $default = null)
 {
     #try to get a value by $_REQUEST if empty return null
-    return isset($value) ? $value : $default;
+    return isset($value) ? filter_var($value, FILTER_SANITIZE_SPECIAL_CHARS) : $default;
 }
 
 function nextpagebutton($offset, $items_per_page, $pagesneeded){
