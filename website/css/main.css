@@ -115,7 +115,7 @@ li a {
 	min-height : 100vh;
 }
 
-.icon img {
+img#icon {
 	max-height : 10em;
 	height     : 10em;
 }
