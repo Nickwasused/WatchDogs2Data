@@ -30,8 +30,7 @@ html {
 }
 
 body {
-	margin          : 0px;
-	background-size : 100% 100%;
+	margin            : 0px;
 }
 
 h1 {
@@ -102,6 +101,12 @@ li a {
 	-webkit-overflow-scrolling : touch;
 	min-width                  : 100%;
 	min-height                 : 100vh;
+}
+
+.content,
+.contentstart {
+	background-repeat : no-repeat;
+	background-size   : cover;
 }
 
 .content:last-of-type {
