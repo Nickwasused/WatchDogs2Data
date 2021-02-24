@@ -15,7 +15,7 @@ echo "
 		<a id=\"characters\"></a>
 		<h1>Character Models</h1>
 		<h2>List of all Watch Dogs 2 Character Models</h2>
-		<center><a href=\"./tools/characters/characters.php\"><img height=\"180px\" width=\"180px\" id=\"icon\" src=\"/images/icons/char.svg\"></img></a></center>
+		<center><a href=\"./tools/characters/characters.php\"><img height=\"180px\" width=\"180px\" src=\"/images/icons/char.svg\"></img></a></center>
 	</div>
 </div>
 
@@ -24,7 +24,7 @@ echo "
 		<a id=\"vehicles\"></a>
 		<h1>Vehicles</h1>
 		<h2>List of all Watch Dogs 2 Vehicles</h2>
-		<center><a href=\"./tools/cars/vehicles.php\"><img height=\"180px\" width=\"180px\" id=\"icon\" src=\"/images/icons/cars.svg\"></img></a></center>
+		<center><a href=\"./tools/cars/vehicles.php\"><img height=\"180px\" width=\"180px\" src=\"/images/icons/cars.svg\"></img></a></center>
 	</div>
 </div>
 
@@ -33,7 +33,7 @@ echo "
 		<a id=\"lmalayers\"></a>
 		<h1>LMA Layers</h1>
 		<h2>List of all Watch Dogs 2 LMA Layers</h2>
-		<center><a href=\"./tools/lmalayers/lmalayers.php\"><img height=\"180px\" width=\"180px\" id=\"icon\" src=\"/images/icons/layers.svg\"></img></a></center>
+		<center><a href=\"./tools/lmalayers/lmalayers.php\"><img height=\"180px\" width=\"180px\" src=\"/images/icons/layers.svg\"></img></a></center>
 	</div>
 </div>
 
@@ -42,7 +42,7 @@ echo "
 		<a id=\"weathertypes\"></a>
 		<h1>Weather Types</h1>
 		<h2>List of all Watch Dogs 2 Weather Types</h2>
-		<center><a href=\"./tools/weather/weather.php\"><img height=\"180px\" width=\"180px\" id=\"icon\" src=\"/images/icons/weather.svg\"></img></a></center>
+		<center><a href=\"./tools/weather/weather.php\"><img height=\"180px\" width=\"180px\" src=\"/images/icons/weather.svg\"></img></a></center>
 	</div>
 </div>
 
@@ -51,7 +51,7 @@ echo "
 		<a id=\"articles\"></a>
 		<h1>Articles</h1>
 		<h2>Some tips and tricks</h2>
-		<center><a href=\"./articles/article.php\"><img height=\"180px\" width=\"180px\" id=\"icon\" src=\"/images/icons/articles.svg\"></img></a></center>
+		<center><a href=\"./articles/article.php\"><img height=\"180px\" width=\"180px\" src=\"/images/icons/articles.svg\"></img></a></center>
 	</div>
 </div>
 

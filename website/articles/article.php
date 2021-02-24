@@ -104,6 +104,7 @@ if ($article === 1) {
 } else if ($article === 0) {
     echo "
     <h3 class=\"submitemail\">You can submit an article here: <a href=\"mailto:".$submit_article_email."?subject=watch dogs 2 article Suggestion&body=Author:%0Acategory:%0Atext:\">".$submit_article_email."</a></h3>
+    <link type='text/css' rel='stylesheet' href='/css/table.css' media=\"none\" onload=\"if(media!='all')media='all'\">
     <table>
     <thead>
     <tr>

@@ -1,0 +1,62 @@
+table {
+	font-family     : calibri;
+	font-size       : 0.75rem;
+	text-align      : center;
+	table-layout    : fixed;
+	border-spacing  : 1;
+	border-collapse : collapse;
+	empty-cells     : show;
+	background      : rgb(126, 126, 126);
+	border-radius   : 10px;
+	width           : 95%;
+	margin-left     : auto;
+	margin-right    : auto;
+	position        : relative;
+	overflow-x      : auto;
+}
+
+table thead tr {
+	font-size  : 2rem;
+	height     : 60px;
+	background : #36304a;
+	color      : white;
+}
+
+table tbody tr {
+	height    : 50px;
+	font-size : 1.5rem;
+}
+
+table tbody tr:last-child {
+  border : 0;
+}
+
+tbody tr:nth-child(even) {
+	background-color : #b4b4b4;
+}
+
+td:nth-child(even) {
+	width : 65%;
+}
+
+td:nth-child(odd) {
+	width : 35%;
+}
+
+table img {
+	max-width : 20em;
+}
+
+td video {
+	max-width : 20em; 
+}
+
+.row {
+	margin : 0 -5px;
+}
+
+.row:after {
+  content : "";
+  display : table;
+  clear   : both;
+}

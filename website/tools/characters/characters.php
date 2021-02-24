@@ -61,6 +61,7 @@ echo "
 buttonscycle($searchoptions, "characters.php", $page, $valueneeded, $nextpagebutton);
 
 echo "
+<link type='text/css' rel='stylesheet' href='/css/table.css' media=\"none\" onload=\"if(media!='all')media='all'\">
 <table>
 <thead>
 <tr>

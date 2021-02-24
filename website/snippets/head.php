@@ -1,5 +1,5 @@
-<!DOCTYPE html>
 <?php
+echo "<!DOCTYPE html>";
 #sanitize function
 function sanitize_output($buffer) {
 
