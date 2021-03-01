@@ -1,0 +1,3 @@
+User-Agent: *
+Allow: / 
+Sitemap: https://altv.nickwasused.eu/sitemap.xml
