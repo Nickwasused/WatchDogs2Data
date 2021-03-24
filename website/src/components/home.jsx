@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import AsyncImage from '../asyncimage.js';
-import char from '../images/icons/char.svg';
-import cars from '../images/icons/cars.svg';
-import layers from '../images/icons/layers.svg';
-import weather from '../images/icons/weather.svg';
 
 class Home extends Component {
     render() {
@@ -23,7 +19,7 @@ class Home extends Component {
                     <a id="characters"></a>
                     <h1>Character Models</h1>
                     <h2>List of all Watch Dogs 2 Character Models</h2>
-                    <center><a href="/characters"><AsyncImage src={char} height="180px" width="180px"/></a></center>
+                    <center><a href="/characters"><AsyncImage src={"images/icons/char.svg"} height="180px" width="180px"/></a></center>
                 </div>
             </div>
 
@@ -32,7 +28,7 @@ class Home extends Component {
                     <a id="vehicles"></a>
                     <h1>Vehicles</h1>
                     <h2>List of all Watch Dogs 2 Vehicles</h2>
-                    <center><a href="/vehicles"><AsyncImage src={cars} height="180px" width="180px"/></a></center>
+                    <center><a href="/vehicles"><AsyncImage src={"images/icons/cars.svg"} height="180px" width="180px"/></a></center>
                 </div>
             </div>
 
@@ -41,7 +37,7 @@ class Home extends Component {
                     <a id="lmalayers"></a>
                     <h1>LMA Layers</h1>
                     <h2>List of all Watch Dogs 2 LMA Layers</h2>
-                    <center><a href="lmalayers"><AsyncImage src={layers} height="180px" width="180px"/></a></center>
+                    <center><a href="lmalayers"><AsyncImage src={"images/icons/layers.svg"} height="180px" width="180px"/></a></center>
                 </div>
             </div>
 
@@ -50,7 +46,7 @@ class Home extends Component {
                     <a id="weathertypes"></a>
                     <h1>Weather Types</h1>
                     <h2>List of all Watch Dogs 2 Weather Types</h2>
-                    <center><a href="/weather"><AsyncImage src={weather} height="180px" width="180px"/></a></center>
+                    <center><a href="/weather"><AsyncImage src={"images/icons/weather.svg"} height="180px" width="180px"/></a></center>
                 </div>
             </div>
         </div>
