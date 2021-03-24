@@ -7,7 +7,7 @@ class Weather extends Component {
         super();
 
         // an example array of items to be paged
-        var weathers = weatherdata.map(i => ({ id: (i+1), name: i.weathername.toLowerCase() }));
+        var weathers = weatherdata.map(i => ({ id: (i+1), name: i.weathername }));
 
         this.state = {
             exampleItems: weathers,
