@@ -8,7 +8,7 @@ class Vehicles extends Component {
         super();
 
         // an example array of items to be paged
-        var vehicles = vehicledata.map(i => ({ id: (i+1), name: i.vehiclename }));
+        var vehicles = vehicledata.map(i => ({ id: (i+1), name: i.vehiclename.toLowerCase() }));
 
         this.state = {
             exampleItems: vehicles,

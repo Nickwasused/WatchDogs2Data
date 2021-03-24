@@ -8,7 +8,7 @@ class Characters extends Component {
         super();
 
         // an example array of items to be paged
-        var models = characterdata.map(i => ({ id: (i+1), name: i.modelname }));
+        var models = characterdata.map(i => ({ id: (i+1), name: i.modelname.toLowerCase() }));
 
         this.state = {
             exampleItems: models,

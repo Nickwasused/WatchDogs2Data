@@ -8,7 +8,7 @@ class Lmalayers extends Component {
         super();
 
         // an example array of items to be paged
-        var lmalayers = lmalayerdata.map(i => ({ id: (i+1), name: i.lmalayer }));
+        var lmalayers = lmalayerdata.map(i => ({ id: (i+1), name: i.lmalayer.toLowerCase() }));
 
         this.state = {
             exampleItems: lmalayers,
