@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AsyncImage from '../asyncimage.js';
 import lmalayerdata from '../data/lmalayers.json';
 import Pagination from './pagination.jsx';
+import Lmaobject from './subcomponents/lmalayerobject.jsx';
 
 class Lmalayers extends Component {
   constructor() {
@@ -41,14 +42,8 @@ class Lmalayers extends Component {
                 </thead>
                 <tbody>
                 {
-                  this.state.pageOfItems.map(item =>  <tr>
-                    <td>
-                      <p>{item.name}</p>
-                    </td>
-                      <td>
-                        <AsyncImage src={"images/webp/lmalayers/" + item.name + ".webp"}/>
-                      </td>
-                  </tr>
+                  this.state.pageOfItems.map(item =>
+                    <Lmaobject {...item} key={item.name}/>
                   )
                 }
                 </tbody>

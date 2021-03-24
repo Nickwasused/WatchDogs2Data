@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import AsyncImage from '../asyncimage.js';
 import characterdata from '../data/characters.json';
 import Pagination from './pagination.jsx';
+import Modelobject from './subcomponents/modelobject.jsx';
 
 class Characters extends Component {
   constructor() {
@@ -41,14 +41,8 @@ class Characters extends Component {
                 </thead>
                 <tbody>
                 {
-                  this.state.pageOfItems.map(item =>    <tr>
-                    <td>
-                      <p>{item.name}</p>
-                    </td>
-                    <td>
-                      <AsyncImage src={"images/webp/models/" + item.name + ".webp"}/>
-                    </td>
-                  </tr>
+                  this.state.pageOfItems.map(item =>
+                    <Modelobject {...item} key={item.name}/>
                   )
                 }
                 </tbody>

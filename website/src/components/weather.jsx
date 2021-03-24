@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import weatherdata from '../data/weather.json';
 import Pagination from './pagination.jsx';
+import Weatherobject from './subcomponents/weatherobject.jsx';
 
 class Weather extends Component {
     constructor() {
@@ -40,17 +41,8 @@ class Weather extends Component {
                   </thead>
                   <tbody>
                   {
-                    this.state.pageOfItems.map(item =>   <tr>
-                      <td>
-                        <p>{item.name}</p>
-                      </td>
-                        <td>
-                          <video controls muted>
-                            <source src={"videos/webm/weather/" + item.name + ".webm"} type="video/webm"/>
-                            <source src={"videos/mp4/weather/" + item.name + ".mp4"} type="video/mp4"/>
-                          </video>
-                        </td>
-                    </tr>
+                    this.state.pageOfItems.map(item =>
+                      <Weatherobject {...item} key={item.name}/> 
                     )
                   }
                   </tbody>

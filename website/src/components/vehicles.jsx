@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import AsyncImage from '../asyncimage.js';
 import vehicledata from '../data/vehicles.json';
 import Pagination from './pagination.jsx';
+import Vehicleobject from './subcomponents/vehicleobject.jsx';
 
 class Vehicles extends Component {
     constructor() {
@@ -11,8 +11,9 @@ class Vehicles extends Component {
         var vehicles = vehicledata.map(i => ({ id: (i+1), name: i.vehiclename.toLowerCase() }));
 
         this.state = {
-            exampleItems: vehicles,
-            pageOfItems: []
+            vehicles: vehicles,
+            pageOfItems: [],
+            inputvalue: ''
         };
 
         // bind function in constructor instead of render (https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md)
@@ -22,7 +23,8 @@ class Vehicles extends Component {
     onChangePage(pageOfItems) {
         // update state with new page of items
         this.setState({ pageOfItems: pageOfItems });
-    }
+    };
+
     render() {
       return (
         <div>
@@ -35,25 +37,18 @@ class Vehicles extends Component {
                     <td>image</td>
                   </tr>
                   <tr>
-                    <td>Search using STRG+F</td>
+                    <td></td>
                     <td></td>
                   </tr>
                 </thead>
                 <tbody>
                 {
                 this.state.pageOfItems.map(item =>
-                            <tr>
-                            <td>
-                              <p>{item.name}</p>
-                            </td>
-                              <td>
-                                <AsyncImage src={"images/webp/vehicles/" + item.name + ".webp"}/>
-                              </td>
-                          </tr>
-                        )}
+                  <Vehicleobject {...item} key={item.name}/>
+                )}
                 </tbody>
               </table>
-              <Pagination items={this.state.exampleItems} onChangePage={this.onChangePage} />
+              <Pagination items={this.state.vehicles} onChangePage={this.onChangePage} />
             </div>
           </div>
         </div>

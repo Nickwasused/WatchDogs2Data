@@ -4,6 +4,7 @@ import {
   Route,
   NavLink
 } from 'react-router-dom';
+import React from "react";
 import './styles/App.css';
 
 import Home from './components/home';
