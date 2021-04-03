@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import AsyncImage from '../asyncimage.js';
 import lmalayerdata from '../data/lmalayers.json';
 import Pagination from './pagination.jsx';
 import Lmaobject from './subcomponents/lmalayerobject.jsx';
