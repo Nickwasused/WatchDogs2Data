@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense, lazy } from "react";
 import weatherdata from '../data/weather.json';
-import Pagination from './pagination.jsx';
-import Weatherobject from './subcomponents/weatherobject.jsx';
+
+const Pagination = lazy(() => import('./pagination.jsx'));
+const Weatherobject = lazy(() => import('./subcomponents/weatherobject.jsx'));
 
 class Weather extends Component {
     constructor() {
@@ -40,14 +41,18 @@ class Weather extends Component {
                   </tr>
                   </thead>
                   <tbody>
-                  {
-                    this.state.pageOfItems.map(item =>
-                      <Weatherobject {...item} key={item.name}/> 
-                    )
-                  }
+                  <Suspense fallback={<div>Loading...</div>}>
+                    {
+                      this.state.pageOfItems.map(item =>
+                        <Weatherobject {...item} key={item.name}/> 
+                      )
+                    }
+                  </Suspense>
                   </tbody>
                 </table>
+                <Suspense fallback={<div>Loading...</div>}>
                 <Pagination items={this.state.exampleItems} onChangePage={this.onChangePage} />
+              </Suspense>
               </div>
             </div>
           </div>

@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense, lazy } from "react";
 import lmalayerdata from '../data/lmalayers.json';
-import Pagination from './pagination.jsx';
-import Lmaobject from './subcomponents/lmalayerobject.jsx';
+
+const Pagination = lazy(() => import('./pagination.jsx'));
+const Lmaobject = lazy(() => import('./subcomponents/lmalayerobject.jsx'));
 
 class Lmalayers extends Component {
   constructor() {
@@ -40,14 +41,18 @@ class Lmalayers extends Component {
                   </tr>
                 </thead>
                 <tbody>
+                <Suspense fallback={<div>Loading...</div>}>
                 {
                   this.state.pageOfItems.map(item =>
                     <Lmaobject {...item} key={item.name}/>
                   )
                 }
+                </Suspense>
                 </tbody>
               </table>
-              <Pagination items={this.state.exampleItems} onChangePage={this.onChangePage} />
+              <Suspense fallback={<div>Loading...</div>}>
+                <Pagination items={this.state.exampleItems} onChangePage={this.onChangePage} />
+              </Suspense>
             </div>
           </div>
         </div>

@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense, lazy } from "react";
 import vehicledata from '../data/vehicles.json';
-import Pagination from './pagination.jsx';
-import Vehicleobject from './subcomponents/vehicleobject.jsx';
+
+const Pagination = lazy(() => import('./pagination.jsx'));
+const Vehicleobject = lazy(() => import('./subcomponents/vehicleobject.jsx'));
 
 class Vehicles extends Component {
     constructor() {
@@ -11,7 +12,7 @@ class Vehicles extends Component {
         var vehicles = vehicledata.map(i => ({ id: (i+1), name: i.vehiclename.toLowerCase() }));
 
         this.state = {
-            vehicles: vehicles,
+            exampleItems: vehicles,
             pageOfItems: [],
             inputvalue: ''
         };
@@ -42,13 +43,17 @@ class Vehicles extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                {
-                this.state.pageOfItems.map(item =>
-                  <Vehicleobject {...item} key={item.name}/>
-                )}
+                <Suspense fallback={<div>Loading...</div>}>
+                  {
+                  this.state.pageOfItems.map(item =>
+                    <Vehicleobject {...item} key={item.name}/>
+                  )}
+                </Suspense>
                 </tbody>
               </table>
-              <Pagination items={this.state.vehicles} onChangePage={this.onChangePage} />
+              <Suspense fallback={<div>Loading...</div>}>
+                <Pagination items={this.state.exampleItems} onChangePage={this.onChangePage} />
+              </Suspense>
             </div>
           </div>
         </div>

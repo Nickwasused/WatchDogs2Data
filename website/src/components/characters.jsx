@@ -1,7 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense, lazy } from "react";
 import characterdata from '../data/characters.json';
-import Pagination from './pagination.jsx';
-import Modelobject from './subcomponents/modelobject.jsx';
+
+
+const Pagination = lazy(() => import('./pagination.jsx'));
+const Modelobject = lazy(() => import('./subcomponents/modelobject.jsx'));
+
 
 class Characters extends Component {
   constructor() {
@@ -40,14 +43,18 @@ class Characters extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                {
-                  this.state.pageOfItems.map(item =>
-                    <Modelobject {...item} key={item.name}/>
-                  )
-                }
+                <Suspense fallback={<div>Loading...</div>}>
+                  {
+                    this.state.pageOfItems.map(item =>
+                      <Modelobject {...item} key={item.name}/>
+                    )
+                  }
+                </Suspense>
                 </tbody>
               </table>
-              <Pagination items={this.state.exampleItems} onChangePage={this.onChangePage} />
+              <Suspense fallback={<div>Loading...</div>}>
+                <Pagination items={this.state.exampleItems} onChangePage={this.onChangePage} />
+              </Suspense>
             </div>
           </div>
         </div>

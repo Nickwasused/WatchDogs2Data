@@ -4,14 +4,14 @@ import {
   Route,
   NavLink
 } from 'react-router-dom';
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import './styles/App.css';
 
-import Home from './components/home';
-import Vehicles from './components/vehicles';
-import Characters from './components/characters';
-import Lmalayers from './components/lmalayers';
-import Weather from './components/weather';
+const Home = lazy(() => import('./components/home'));
+const Vehicles = lazy(() => import('./components/vehicles'));
+const Characters = lazy(() => import('./components/characters'));
+const Lmalayers = lazy(() => import('./components/lmalayers'));
+const Weather = lazy(() => import('./components/weather'));
 
 function App() {
   return (
@@ -57,6 +57,7 @@ function App() {
             </li>
           </ul>
         </nav>
+        <Suspense fallback={<div>Loading...</div>}>
         <Switch>
           <Route exact path="/" component={Home}></Route>
           <Route exact path="/characters" component={Characters}></Route>
@@ -64,6 +65,7 @@ function App() {
           <Route exact path="/lmalayers" component={Lmalayers}></Route>
           <Route exact path="/weather" component={Weather}></Route>
         </Switch>
+        </Suspense>
       </Router>
       </div>
     </div>
