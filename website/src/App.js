@@ -58,13 +58,13 @@ function App() {
           </ul>
         </nav>
         <Suspense fallback={<div>Loading...</div>}>
-        <Switch>
-          <Route exact path="/" component={Home}></Route>
-          <Route exact path="/characters" component={Characters}></Route>
-          <Route exact path="/vehicles" component={Vehicles}></Route>
-          <Route exact path="/lmalayers" component={Lmalayers}></Route>
-          <Route exact path="/weather" component={Weather}></Route>
-        </Switch>
+          <Switch>
+            <Route exact path="/" component={Home}></Route>
+            <Route exact path="/characters" component={Characters}></Route>
+            <Route exact path="/vehicles" component={Vehicles}></Route>
+            <Route exact path="/lmalayers" component={Lmalayers}></Route>
+            <Route exact path="/weather" component={Weather}></Route>
+          </Switch>
         </Suspense>
       </Router>
       </div>
