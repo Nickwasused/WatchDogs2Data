@@ -15,20 +15,3 @@ If you need help please open an issue.
 
 ## Who maintains and contributes to the project
 At the moment the project is maintained by me (Nickwasused).
-
-# Data
-
-## Preview
-[Preview](github/preview.md)
-
-## raw-data
-[character models](github/characters.md)<br>
-[vehicles](github/vehicles.md)<br>
-[weather](github/weather.md)<br>
-[lmalayers](github/lmalayers.md)<br>
-
-## Scripthook guide/tweaks
-[here!](github/scripthook/index.md)<br>
-
-## Example Database
-[database!](github/watchdogs2example.sql)<br>

@@ -1,0 +1,41 @@
+title: Watch Dogs 2 Data
+author:
+  name: Nickwasused
+  email: nickwasused.social@protonmail.com
+description: >-
+  This is a Watch Dogs 2 Modding Website where you can find Vehicles, Characters, Weather Types, and more.
+baseurl: ""
+url: "https://watchdogs2.nickwasused.com"
+
+permalink: /:year/:month/:day/:title
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+minima:
+  skin: dark
+  date_format: "%d.%m.%Y"
+  social_links:
+    twitter: Nickwasused
+    github:  Nickwasused
+
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - build.bat
+  - README.md
+  - serve.bat
+  - CODEOWNERS
+  - LICENSE

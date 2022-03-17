@@ -1,0 +1,26 @@
+<div id="search-container">
+    <input type="text" id="search-input" placeholder="Search..." />
+    <ul id="results-container"></ul>
+</div>
+
+<script src="/assets/js/simple-jekyll-search.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    window.simpleJekyllSearch = SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        json: '/search.json',
+        noResultsText: "There are no Results!",
+        debounceTime: 1000,
+        limit: 10,
+        searchResultTemplate: '<li><a href="{url}?query={query}" title="{desc}">{title}</a><br />{description}</li>',
+    })
+    const params = new URLSearchParams(window.location.search);
+    const search_text = params.get("search");
+    let search_input = document.getElementById("search-input");
+    search_input.value = search_text;
+    // Without the timeout the search is not working!
+    setTimeout(() => {
+        window.simpleJekyllSearch.search(search_text)
+    }, 2000)
+</script>
