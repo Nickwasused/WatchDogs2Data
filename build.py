@@ -49,11 +49,16 @@ description: "{}"
 ---
 """
 
-table_basic = """| ID | Name | Image/Video | Location
+table_basic = """| ID | Name | Image/Video
+| - | - | ----------
+"""
+
+table_basic_loc = """| ID | Name | Image/Video | Location
 | - | - | ---------- | - 
 """
 
 table_empty_row = """| | | """
+table_empty_row_loc = """| | | """
 
 lozad_video = """<video controls width="100%" class="lozad"><source data-src="{}" type="video/webm" /><source data-src="{}" type="video/mp4" /></video>"""
 
@@ -69,13 +74,17 @@ for data in builddata:
             site_data.append(item["name"])
 
         f.write(example_header.format(data["title"], data["categories"], data["description"]))
-        f.write(table_basic)
+
+        if (data["category"] == "lmalayers"):
+            f.write(table_basic_loc)
+        else:
+            f.write(table_basic)
 
         for item in build_json:
             save_image = ""
             try:
                 if (item["image"] == "1"):
-                    save_image = lozad_image.format(data["category"], item["name"])
+                    save_image = lozad_image.format(data["category"], item["name"].lower())
             except KeyError:
                 pass
 
@@ -92,7 +101,10 @@ for data in builddata:
             except KeyError:
                 pass
 
-            f.write("| {} | {} | {} | {}\n".format(item["id"], item["name"], save_image, location))
+            if (data["category"] == "lmalayers"):
+                f.write("| {} | {} | {} | {}\n".format(item["id"], item["name"], save_image, location))
+            else:
+                f.write("| {} | {} | {}\n".format(item["id"], item["name"], save_image))
 
         f.write(table_empty_row)
         f.close()
