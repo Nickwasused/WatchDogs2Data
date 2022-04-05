@@ -1,0 +1,11 @@
+{{ if default true .Site.Params.GeekdocSearch }}
+  <script defer src="{{ index (index .Site.Data.assets "search.js") "src" | relURL }}"></script>
+  <script src="/js/lozad.js"></script>
+  <script>
+    const observer = lozad();
+    observer.observe();
+  </script>
+  {{- $searchConfigFile := printf "search/%s.config.json" .Language.Lang -}}
+  {{- $searchConfig := resources.Get "search/config.json" | resources.ExecuteAsTemplate $searchConfigFile . | resources.Minify -}}
+  {{- $searchConfig.Publish -}}
+{{ end }}

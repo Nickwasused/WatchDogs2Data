@@ -46,7 +46,6 @@ title:  "{}"
 date:   2022-01-01 00:00:01 +0000
 categories: {}
 description: "{}"
-data: {}
 ---
 """
 
@@ -61,18 +60,15 @@ lozad_video = """<video controls width="100%" class="lozad"><source data-src="{}
 lozad_image = """<img class="lozad" data-src="/images/webp/{}/{}.webp" />"""
 
 for data in builddata:
-    build_json = loadjson("./data/{}".format(data["source"]))
-    try:
-        os.remove("./_posts/{}".format(data["filename"]))
-    except:
-        pass
-    with open("./_posts/{}".format(data["filename"]), "w+", encoding="utf-8") as f:
+    build_json = loadjson("./source_data/{}".format(data["source"]))
+
+    with open("./content/{}/_index.md".format(data["category"]), "w+", encoding="utf-8") as f:
 
         site_data = []
         for item in build_json:
             site_data.append(item["name"])
 
-        f.write(example_header.format(data["title"], data["categories"], data["description"], site_data))
+        f.write(example_header.format(data["title"], data["categories"], data["description"]))
         f.write(table_basic)
 
         for item in build_json:
