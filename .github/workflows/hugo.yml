@@ -9,7 +9,6 @@ on:
   push:
     branches:
       - master
-      - add-automatic-release
 
 env:
   HUGO_VERSION: 0.93.3
