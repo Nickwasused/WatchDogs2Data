@@ -7,7 +7,6 @@ def loadjson(file):
 
 builddata = [
     {
-        "filename": "2022-01-01-characters.markdown",
         "source": "characters.json",
         "title": "Characters",
         "category": "characters",
@@ -15,7 +14,6 @@ builddata = [
         "description": "A list of every Character Model in Watch Dogs 2 with Images."
     },
     {
-        "filename": "2022-01-01-lmalayers.markdown",
         "source": "lmalayers.json",
         "title": "LMA Layers",
         "category": "lmalayers",
@@ -23,7 +21,6 @@ builddata = [
         "description": "A list of every LMA-Layer in Watch Dogs 2."
     },
     {
-        "filename": "2022-01-01-vehicles.markdown",
         "source": "vehicles.json",
         "title": "Vehicles",
         "category": "vehicles",
@@ -31,7 +28,6 @@ builddata = [
         "description": "A list of every Vehicle Model in Watch Dogs 2 with Images."
     },
     {
-        "filename": "2022-01-01-weather.markdown",
         "source": "weather.json",
         "title": "Weather",
         "category": "weather",
