@@ -60,9 +60,9 @@ table_basic_loc = """| ID | Name | Image/Video | Location
 table_empty_row = """| | | """
 table_empty_row_loc = """| | | """
 
-lozad_video = """<video controls width="100%" class="lozad"><source data-src="{}" type="video/webm" /><source data-src="{}" type="video/mp4" /></video>"""
+lozad_video = "< video file={} >"
 
-lozad_image = """<img class="lozad" data-src="/images/webp/{}/{}.webp" />"""
+lozad_image = "< image file={} >"
 
 for data in builddata:
     build_json = loadjson("./source_data/{}".format(data["source"]))
@@ -84,13 +84,13 @@ for data in builddata:
             save_image = ""
             try:
                 if (item["image"] == "1"):
-                    save_image = lozad_image.format(data["category"], item["name"].lower())
+                    save_image = "{{" + lozad_image.format("/images/webp/{}/{}".format(data["category"], item["name"].lower())) + "}}"
             except KeyError:
                 pass
 
             try:
                 if (item["weathervideo"] == "1"):
-                    save_image = lozad_video.format("/videos/webm/{}/{}.webm".format(data["category"], item["name"]), "/videos/mp4/{}/{}.mp4".format(data["category"], item["name"])) 
+                    save_image = "{{" + lozad_video.format("/videos/webm/{}/{}".format(data["category"], item["name"])) + "}}"
             except KeyError:
                 pass
 

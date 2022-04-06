@@ -1,4 +1,4 @@
-baseURL = "http://localhost"
+baseURL = "https://watchdogs2.nickwasused.com"
 title = "Watch Dogs 2 Wiki"
 theme = "hugo-geekdoc"
 
@@ -23,3 +23,13 @@ enableRobotsTXT = true
 
 [taxonomies]
    tag = "Watch Dogs 2"
+
+[params]
+  geekdocRepo = "https://github.com/Nickwasused/WatchDogs2Data"
+
+  # We use Lozad for that
+  geekdocImageLazyLoading = false
+
+  [params.geekdocContentLicense]
+    name = "Mozilla Public License 2.0"
+    link = "https://raw.githubusercontent.com/Nickwasused/WatchDogs2Data/main/LICENSE"
