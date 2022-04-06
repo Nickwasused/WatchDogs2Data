@@ -1,0 +1,45 @@
+# https://www.andrewconnell.com/blog/automated-hugo-releases-with-github-actions/
+name: Build release
+
+defaults:
+  run:
+    shell: bash
+
+on:
+  push:
+    branches:
+      - master
+      - add-automatic-release
+
+env:
+  HUGO_VERSION: 0.93.3
+  SITE_BASEURL: .
+
+jobs:
+  build-deploy:
+    name: Build and deploy
+    if: "!contains(github.event.head_commit.message,'[skip-ci]')"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo codebase
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+          clean: true
+          submodules: false
+
+      - name: Download Hugo v${{ env.HUGO_VERSION }} Linux x64
+        run: "wget https://github.com/gohugoio/hugo/releases/download/v${{ env.HUGO_VERSION }}/hugo_${{ env.HUGO_VERSION }}_Linux-64bit.deb -O hugo_${{ env.HUGO_VERSION }}_Linux-64bit.deb"
+      - name: Install Hugo
+        run: sudo dpkg -i hugo*.deb
+
+      - name: Build site with Hugo
+        run: hugo --baseUrl '${{ env.SITE_BASEURL }}'
+
+      - uses: meeDamian/github-release@2.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: "${{ github.ref }}-${{ github.sha }}"
+          name: "${{ github.sha }}"
+          files: >
+            public/
